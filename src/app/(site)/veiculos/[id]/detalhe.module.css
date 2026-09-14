@@ -1,0 +1,170 @@
+.page {
+  padding-top: calc(var(--header-h) + 32px);
+  padding-bottom: 80px;
+  min-height: 100vh;
+}
+
+.back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-1);
+  font-size: 0.92rem;
+  font-weight: 500;
+  margin-bottom: 28px;
+  transition: color 0.2s ease;
+}
+.back:hover {
+  color: var(--brand);
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: 40px;
+  align-items: start;
+}
+
+.left {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.block {
+  background: var(--bg-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+}
+.blockTitle {
+  font-size: 1.3rem;
+  color: var(--text-0);
+  margin-bottom: 16px;
+}
+.desc {
+  color: var(--text-1);
+  white-space: pre-line;
+  line-height: 1.75;
+}
+
+.opcionais {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+.opcionais li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--text-1);
+  font-size: 0.94rem;
+}
+.opcionais svg {
+  color: var(--success);
+  flex-shrink: 0;
+}
+
+.sidebar {
+  position: sticky;
+  top: calc(var(--header-h) + 20px);
+}
+.card {
+  background: var(--bg-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  position: relative;
+}
+.badge {
+  display: inline-block;
+  padding: 5px 12px;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #fff;
+  background: linear-gradient(135deg, var(--brand), var(--brand-600));
+  margin-bottom: 14px;
+}
+.title {
+  font-size: 1.9rem;
+  color: var(--text-0);
+}
+.versao {
+  color: var(--text-2);
+  margin-top: 4px;
+}
+.price {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 2.4rem;
+  color: var(--text-0);
+  margin: 20px 0 24px;
+}
+
+.ficha {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 8px 0;
+  margin-bottom: 24px;
+}
+.ficha li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 0;
+}
+.ficha li:not(:last-child) {
+  border-bottom: 1px solid var(--border);
+}
+.fichaIcon {
+  display: inline-flex;
+  color: var(--brand);
+}
+.fichaLabel {
+  color: var(--text-2);
+  font-size: 0.9rem;
+}
+.fichaValor {
+  margin-left: auto;
+  color: var(--text-0);
+  font-weight: 600;
+  font-size: 0.94rem;
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.actions :global(.btn) {
+  width: 100%;
+}
+
+.note {
+  text-align: center;
+  color: var(--text-3);
+  font-size: 0.82rem;
+  margin-top: 16px;
+}
+
+@media (max-width: 900px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+  .sidebar {
+    position: static;
+  }
+}
+@media (max-width: 500px) {
+  .opcionais {
+    grid-template-columns: 1fr;
+  }
+}
