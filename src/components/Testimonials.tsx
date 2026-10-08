@@ -48,28 +48,28 @@ export function Testimonials() {
           >
             <div className="absolute -inset-4 -z-10 rounded-[2.5rem] bg-gradient-to-br from-emerald-500/20 via-transparent to-teal-500/10 blur-2xl" aria-hidden />
             <figure className="glass relative overflow-hidden rounded-3xl p-8 sm:p-12" aria-live="polite">
-              <Quote className="absolute right-8 top-8 h-16 w-16 text-emerald-400/10" aria-hidden />
+              <Quote className="absolute right-8 top-8 h-16 w-16 text-emerald-700/10" aria-hidden />
               <div className="flex gap-1 text-amber-300" aria-label="Avaliação 5 de 5">
                 {[...Array(5)].map((_, i) => <Star key={i} className="h-5 w-5 fill-current" aria-hidden />)}
               </div>
               <blockquote key={idx} className="mt-6 animate-[fadeUp_0.7s_cubic-bezier(0.16,1,0.3,1)]">
-                <p className="font-display text-xl font-medium leading-relaxed text-white sm:text-2xl">“{t.text}”</p>
+                <p className="font-display text-xl font-medium leading-relaxed text-slate-900 sm:text-2xl">“{t.text}”</p>
               </blockquote>
               <figcaption className="mt-8 flex flex-wrap items-center justify-between gap-4">
                 <div className="flex items-center gap-4">
-                  <span className="grid h-12 w-12 place-items-center rounded-full bg-gradient-to-br from-emerald-300 to-emerald-600 font-display font-bold text-ink-950">
+                  <span className="grid h-12 w-12 place-items-center rounded-full bg-gradient-to-br from-emerald-300 to-emerald-600 font-display font-bold text-emerald-950">
                     {t.name.split(" ").map((n) => n[0]).join("")}
                   </span>
                   <div>
-                    <p className="font-semibold text-white">{t.name}</p>
-                    <p className="text-sm text-zinc-400">{t.city} • comprou {t.car}</p>
+                    <p className="font-semibold text-slate-900">{t.name}</p>
+                    <p className="text-sm text-slate-600">{t.city} • comprou {t.car}</p>
                   </div>
                 </div>
                 <div className="flex gap-2">
-                  <button type="button" onClick={() => go(-1)} aria-label="Depoimento anterior" className="grid h-11 w-11 place-items-center rounded-full border border-white/10 text-white transition hover:border-emerald-400/50 hover:bg-white/5 active:scale-95">
+                  <button type="button" onClick={() => go(-1)} aria-label="Depoimento anterior" className="grid h-11 w-11 place-items-center rounded-full border border-slate-900/10 text-slate-900 transition hover:border-emerald-400/50 hover:bg-emerald-50 active:scale-95">
                     <ChevronLeft className="h-5 w-5" aria-hidden />
                   </button>
-                  <button type="button" onClick={() => go(1)} aria-label="Próximo depoimento" className="grid h-11 w-11 place-items-center rounded-full border border-white/10 text-white transition hover:border-emerald-400/50 hover:bg-white/5 active:scale-95">
+                  <button type="button" onClick={() => go(1)} aria-label="Próximo depoimento" className="grid h-11 w-11 place-items-center rounded-full border border-slate-900/10 text-slate-900 transition hover:border-emerald-400/50 hover:bg-emerald-50 active:scale-95">
                     <ChevronRight className="h-5 w-5" aria-hidden />
                   </button>
                 </div>
@@ -97,9 +97,9 @@ export function Testimonials() {
             ["70%", "clientes voltam para trocar"],
           ].map(([n, l], i) => (
             <Reveal key={l} delay={i * 90}>
-              <div className="flex items-center justify-center gap-3 rounded-2xl border border-white/5 bg-white/[0.02] py-5">
-                <span className="font-display text-2xl font-bold text-white">{n}</span>
-                <span className="text-sm text-zinc-400">{l}</span>
+              <div className="flex items-center justify-center gap-3 rounded-2xl border border-slate-900/5 bg-white py-5">
+                <span className="font-display text-2xl font-bold text-slate-900">{n}</span>
+                <span className="text-sm text-slate-600">{l}</span>
               </div>
             </Reveal>
           ))}
