@@ -5,7 +5,7 @@ import { CONTACT, waLink } from "../data";
 
 export function Footer() {
   return (
-    <footer id="contato" className="relative border-t border-slate-900/5 bg-white/60 pt-20" aria-labelledby="contato-title">
+    <footer id="contato" className="relative border-t border-slate-900/5 bg-emerald-50/45 pt-20" aria-labelledby="contato-title">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <div className="grid gap-12 lg:grid-cols-[1.1fr_1fr]">
           <Reveal>
