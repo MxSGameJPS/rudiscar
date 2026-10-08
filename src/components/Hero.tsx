@@ -41,9 +41,9 @@ export function Hero() {
           <div {...enter(0)}>
             <a
               href="#estoque"
-              className="group inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 py-1.5 pl-1.5 pr-4 text-xs font-medium text-zinc-300 backdrop-blur transition hover:border-emerald-400/40 hover:bg-white/10 sm:text-sm"
+              className="group inline-flex items-center gap-2 rounded-full border border-slate-900/10 bg-emerald-50 py-1.5 pl-1.5 pr-4 text-xs font-medium text-slate-700 backdrop-blur transition hover:border-emerald-400/40 hover:bg-emerald-50 sm:text-sm"
             >
-              <span className="rounded-full bg-emerald-500 px-2.5 py-0.5 text-[11px] font-bold uppercase tracking-wide text-ink-950">Novo</span>
+              <span className="rounded-full bg-emerald-500 px-2.5 py-0.5 text-[11px] font-bold uppercase tracking-wide text-emerald-950">Novo</span>
               Estoque atualizado esta semana
               <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" aria-hidden />
             </a>
@@ -52,7 +52,7 @@ export function Hero() {
           <h1
             id="hero-title"
             {...enter(120)}
-            className={`${enter(120).className} mt-7 font-display text-[2.6rem] font-extrabold leading-[1.05] tracking-tight text-white sm:text-6xl lg:text-7xl`}
+            className={`${enter(120).className} mt-7 font-display text-[2.6rem] font-extrabold leading-[1.05] tracking-tight text-slate-900 sm:text-6xl lg:text-7xl`}
           >
             Seu próximo carro,
             <br />
@@ -61,7 +61,7 @@ export function Hero() {
 
           <p
             {...enter(240)}
-            className={`${enter(240).className} mx-auto mt-6 max-w-2xl text-base leading-relaxed text-zinc-400 sm:text-lg`}
+            className={`${enter(240).className} mx-auto mt-6 max-w-2xl text-base leading-relaxed text-slate-600 sm:text-lg`}
           >
             Na Rudi's Car, cada seminovo passa pela nossa própria oficina mecânica antes de chegar até você.
             Mais de 120 itens inspecionados, garantia real e financiamento que cabe no seu bolso — aqui em Dois Irmãos.
@@ -70,9 +70,9 @@ export function Hero() {
           <div {...enter(360)} className={`${enter(360).className} mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row`}>
             <a
               href="#estoque"
-              className="group relative inline-flex w-full items-center justify-center gap-2 overflow-hidden rounded-2xl bg-emerald-500 px-7 py-4 text-base font-semibold text-ink-950 shadow-xl shadow-emerald-500/25 transition-all duration-300 hover:-translate-y-0.5 hover:bg-emerald-400 hover:shadow-emerald-400/40 sm:w-auto"
+              className="group relative inline-flex w-full items-center justify-center gap-2 overflow-hidden rounded-2xl bg-emerald-500 px-7 py-4 text-base font-semibold text-emerald-950 shadow-xl shadow-emerald-500/25 transition-all duration-300 hover:-translate-y-0.5 hover:bg-emerald-400 hover:shadow-emerald-400/40 sm:w-auto"
             >
-              <span className="absolute inset-y-0 left-0 w-1/3 bg-white/40 blur-md animate-shine" aria-hidden />
+              <span className="absolute inset-y-0 left-0 w-1/3 bg-emerald-100 blur-md animate-shine" aria-hidden />
               Ver carros disponíveis
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" aria-hidden />
             </a>
@@ -80,17 +80,17 @@ export function Hero() {
               href={waLink("Olá! Gostaria de avaliar meu carro na troca por um seminovo da Rudi's Car.")}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex w-full items-center justify-center gap-2 rounded-2xl border border-white/15 bg-white/5 px-7 py-4 text-base font-semibold text-white backdrop-blur transition-all duration-300 hover:-translate-y-0.5 hover:border-white/30 hover:bg-white/10 sm:w-auto"
+              className="inline-flex w-full items-center justify-center gap-2 rounded-2xl border border-slate-900/15 bg-emerald-50 px-7 py-4 text-base font-semibold text-slate-900 backdrop-blur transition-all duration-300 hover:-translate-y-0.5 hover:border-slate-900/30 hover:bg-emerald-50 sm:w-auto"
             >
               <MessageCircle className="h-4 w-4" aria-hidden />
               Avaliar meu usado
             </a>
           </div>
 
-          <ul {...enter(480)} className={`${enter(480).className} mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-sm text-zinc-400`}>
-            <li className="flex items-center gap-2"><ShieldCheck className="h-4 w-4 text-emerald-400" aria-hidden /> Garantia de motor e câmbio</li>
-            <li className="flex items-center gap-2"><Wrench className="h-4 w-4 text-emerald-400" aria-hidden /> Oficina própria</li>
-            <li className="flex items-center gap-2"><BadgeCheck className="h-4 w-4 text-emerald-400" aria-hidden /> Procedência verificada</li>
+          <ul {...enter(480)} className={`${enter(480).className} mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-sm text-slate-600`}>
+            <li className="flex items-center gap-2"><ShieldCheck className="h-4 w-4 text-emerald-700" aria-hidden /> Garantia de motor e câmbio</li>
+            <li className="flex items-center gap-2"><Wrench className="h-4 w-4 text-emerald-700" aria-hidden /> Oficina própria</li>
+            <li className="flex items-center gap-2"><BadgeCheck className="h-4 w-4 text-emerald-700" aria-hidden /> Procedência verificada</li>
           </ul>
         </div>
 
@@ -98,7 +98,7 @@ export function Hero() {
         <div {...enter(620)} className={`${enter(620).className} relative mx-auto mt-16 max-w-6xl`}>
           <div className="absolute -inset-x-10 -bottom-10 top-10 -z-10 rounded-[3rem] bg-gradient-to-t from-emerald-500/25 via-emerald-500/5 to-transparent blur-3xl" aria-hidden />
           <div
-            className="relative overflow-hidden rounded-3xl border border-white/10 shadow-2xl shadow-black/60 transition-transform duration-700 ease-out"
+            className="relative overflow-hidden rounded-3xl border border-slate-900/10 shadow-2xl shadow-black/60 transition-transform duration-700 ease-out"
             style={{ transform: `perspective(1600px) rotateX(${offset.y * -3}deg) rotateY(${offset.x * 4}deg)` }}
           >
             <img
@@ -108,18 +108,18 @@ export function Hero() {
               style={{ transform: `scale(1.06) translate(${offset.x * -12}px, ${offset.y * -8}px)` }}
               fetchPriority="high"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-ink-950 via-ink-950/10 to-transparent" aria-hidden />
+            <div className="absolute inset-0 bg-gradient-to-t from-emerald-950/75 via-emerald-800/25 to-transparent" aria-hidden />
           </div>
 
           {/* Floating cards */}
           <div className="glass absolute -left-2 top-6 hidden animate-float rounded-2xl p-4 shadow-xl sm:block lg:-left-10">
             <div className="flex items-center gap-3">
-              <span className="grid h-10 w-10 place-items-center rounded-xl bg-emerald-500/15 text-emerald-300">
+              <span className="grid h-10 w-10 place-items-center rounded-xl bg-emerald-500/15 text-emerald-700">
                 <ShieldCheck className="h-5 w-5" aria-hidden />
               </span>
               <div className="text-left">
-                <p className="text-xs text-zinc-400">Inspeção completa</p>
-                <p className="font-display text-sm font-bold text-white">120+ itens verificados</p>
+                <p className="text-xs text-slate-600">Inspeção completa</p>
+                <p className="font-display text-sm font-bold text-slate-900">120+ itens verificados</p>
               </div>
             </div>
           </div>
@@ -128,20 +128,20 @@ export function Hero() {
             <div className="flex items-center gap-1 text-amber-300" aria-label="5 estrelas">
               {[...Array(5)].map((_, i) => <Star key={i} className="h-4 w-4 fill-current" aria-hidden />)}
             </div>
-            <p className="mt-1.5 text-left font-display text-sm font-bold text-white">4,9 no Google</p>
-            <p className="text-left text-xs text-zinc-400">+ de 300 avaliações</p>
+            <p className="mt-1.5 text-left font-display text-sm font-bold text-slate-900">4,9 no Google</p>
+            <p className="text-left text-xs text-slate-600">+ de 300 avaliações</p>
           </div>
 
           <div className="absolute inset-x-4 bottom-4 sm:inset-x-8 sm:bottom-8">
-            <div className="glass mx-auto grid max-w-3xl grid-cols-3 divide-x divide-white/10 rounded-2xl py-4 text-center">
+            <div className="glass mx-auto grid max-w-3xl grid-cols-3 divide-x divide-slate-900/10 rounded-2xl py-4 text-center">
               {[
                 ["20+", "anos de estrada"],
                 ["2.500+", "clientes atendidos"],
                 ["48h", "aprovação de crédito"],
               ].map(([n, l]) => (
                 <div key={l} className="px-2">
-                  <p className="font-display text-xl font-bold text-white sm:text-3xl">{n}</p>
-                  <p className="mt-0.5 text-[11px] text-zinc-400 sm:text-sm">{l}</p>
+                  <p className="font-display text-xl font-bold text-slate-900 sm:text-3xl">{n}</p>
+                  <p className="mt-0.5 text-[11px] text-slate-600 sm:text-sm">{l}</p>
                 </div>
               ))}
             </div>

@@ -8,7 +8,7 @@ export function CTA() {
       <Reveal className="relative mx-auto max-w-7xl">
         <div className="relative isolate overflow-hidden rounded-[2rem] border border-emerald-400/20 px-6 py-16 text-center sm:px-16 sm:py-24">
           <img src={IMAGES.lot} alt="" loading="lazy" className="absolute inset-0 -z-20 h-full w-full object-cover opacity-30" />
-          <div className="absolute inset-0 -z-10 bg-gradient-to-br from-emerald-600/80 via-ink-950/90 to-ink-950" aria-hidden />
+          <div className="absolute inset-0 -z-10 bg-gradient-to-br from-emerald-600/85 via-emerald-700/90 to-emerald-900" aria-hidden />
           <div className="absolute -left-20 -top-20 -z-10 h-72 w-72 rounded-full bg-emerald-400/30 blur-3xl animate-blob" aria-hidden />
           <div className="absolute -bottom-24 -right-10 -z-10 h-72 w-72 rounded-full bg-teal-300/20 blur-3xl animate-blob [animation-delay:-8s]" aria-hidden />
 

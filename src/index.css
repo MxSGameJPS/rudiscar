@@ -45,7 +45,10 @@ html {
   scroll-padding-top: 88px;
 }
 body {
-  @apply bg-white text-slate-900 font-sans antialiased;
+  @apply text-slate-900 font-sans antialiased;
+  background-color: #edf9f1;
+  background-image: radial-gradient(ellipse 75% 40% at 5% 0%, rgba(16,185,129,.22), transparent 78%), radial-gradient(ellipse 85% 38% at 100% 43%, rgba(52,211,153,.17), transparent 80%), linear-gradient(160deg, #e9f8ef 0%, #f5fdf7 28%, #e4f5e9 62%, #f0fbf3 100%);
+  background-attachment: fixed;
   text-rendering: optimizeLegibility;
 }
 ::selection {

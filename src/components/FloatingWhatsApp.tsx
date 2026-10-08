@@ -18,7 +18,7 @@ export function FloatingWhatsApp() {
       rel="noopener noreferrer"
       aria-label="Conversar com a Rudi's Car no WhatsApp"
       className={cn(
-        "group fixed bottom-5 right-5 z-50 flex items-center gap-2 rounded-full bg-emerald-500 p-4 text-ink-950 shadow-2xl shadow-emerald-500/40 transition-all duration-500 hover:bg-emerald-400 sm:bottom-7 sm:right-7",
+        "group fixed bottom-5 right-5 z-50 flex items-center gap-2 rounded-full bg-emerald-500 p-4 text-emerald-950 shadow-2xl shadow-emerald-500/40 transition-all duration-500 hover:bg-emerald-400 sm:bottom-7 sm:right-7",
         show ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-6 opacity-0"
       )}
     >

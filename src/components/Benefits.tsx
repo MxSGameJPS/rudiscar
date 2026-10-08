@@ -36,7 +36,7 @@ function Counter({ to, suffix = "", duration = 1800 }: { to: number; suffix?: st
 
 export function Benefits() {
   return (
-    <section className="relative overflow-hidden border-y border-white/5 bg-ink-900/50 py-24 sm:py-32" aria-labelledby="benefits-title">
+    <section className="relative overflow-hidden border-y border-emerald-900/10 bg-emerald-50/20 py-24 sm:py-32" aria-labelledby="benefits-title">
       <div className="absolute -left-40 top-20 -z-0 h-96 w-96 rounded-full bg-emerald-500/10 blur-[120px] animate-blob" aria-hidden />
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
         <div className="grid items-center gap-14 lg:grid-cols-2 lg:gap-20">
@@ -51,14 +51,14 @@ export function Benefits() {
             <ol className="relative mt-12 space-y-3">
               <span className="absolute bottom-6 left-[27px] top-6 w-px bg-gradient-to-b from-emerald-400/60 via-emerald-400/20 to-transparent" aria-hidden />
               {STEPS.map((s, i) => (
-                <Reveal as="li" key={s.title} delay={i * 110} className="group relative flex gap-5 rounded-2xl p-2 transition-colors hover:bg-white/[0.03]">
-                  <span className="relative z-10 grid h-14 w-14 shrink-0 place-items-center rounded-2xl border border-white/10 bg-ink-800 text-emerald-300 transition-all duration-500 group-hover:scale-105 group-hover:border-emerald-400/40 group-hover:bg-emerald-500 group-hover:text-ink-950">
+                <Reveal as="li" key={s.title} delay={i * 110} className="group relative flex gap-5 rounded-2xl p-2 transition-colors hover:bg-white">
+                  <span className="relative z-10 grid h-14 w-14 shrink-0 place-items-center rounded-2xl border border-slate-900/10 bg-slate-100 text-emerald-700 transition-all duration-500 group-hover:scale-105 group-hover:border-emerald-400/40 group-hover:bg-emerald-500 group-hover:text-emerald-950">
                     <s.icon className="h-5 w-5" aria-hidden />
                   </span>
                   <div className="pt-1.5">
-                    <p className="text-xs font-semibold uppercase tracking-widest text-emerald-400/80">Passo {i + 1}</p>
-                    <h3 className="mt-1 font-display text-lg font-semibold text-white">{s.title}</h3>
-                    <p className="mt-1 text-sm leading-relaxed text-zinc-400">{s.text}</p>
+                    <p className="text-xs font-semibold uppercase tracking-widest text-emerald-700/80">Passo {i + 1}</p>
+                    <h3 className="mt-1 font-display text-lg font-semibold text-slate-900">{s.title}</h3>
+                    <p className="mt-1 text-sm leading-relaxed text-slate-600">{s.text}</p>
                   </div>
                 </Reveal>
               ))}
@@ -66,15 +66,15 @@ export function Benefits() {
           </div>
 
           <Reveal delay={150} className="relative">
-            <div className="relative overflow-hidden rounded-3xl border border-white/10">
+            <div className="relative overflow-hidden rounded-3xl border border-slate-900/10">
               <img src={IMAGES.engine} alt="Mecânico revisando motor de um seminovo" loading="lazy" className="aspect-[4/5] w-full object-cover" />
-              <div className="absolute inset-0 bg-gradient-to-t from-ink-950/90 via-ink-950/20 to-transparent" aria-hidden />
+              <div className="absolute inset-0 bg-gradient-to-t from-emerald-900/85 via-emerald-800/35 to-emerald-500/5" aria-hidden />
               <div className="glass absolute inset-x-5 bottom-5 rounded-2xl p-5">
                 <p className="text-sm font-semibold text-white">Relatório de inspeção • Rudi's Car</p>
-                <ul className="mt-3 grid grid-cols-2 gap-2 text-xs text-zinc-300">
+                <ul className="mt-3 grid grid-cols-2 gap-2 text-xs text-slate-700">
                   {["Motor e arrefecimento", "Câmbio e embreagem", "Freios e pneus", "Suspensão e direção", "Parte elétrica", "Estrutura e pintura"].map((t) => (
                     <li key={t} className="flex items-center gap-1.5">
-                      <span className="grid h-4 w-4 place-items-center rounded-full bg-emerald-500 text-ink-950"><Check className="h-3 w-3" strokeWidth={3} aria-hidden /></span>
+                      <span className="grid h-4 w-4 place-items-center rounded-full bg-emerald-500 text-emerald-950"><Check className="h-3 w-3" strokeWidth={3} aria-hidden /></span>
                       {t}
                     </li>
                   ))}
@@ -82,8 +82,8 @@ export function Benefits() {
               </div>
             </div>
             <div className="glass absolute -right-3 -top-5 animate-float rounded-2xl px-5 py-4 sm:-right-6">
-              <p className="font-display text-3xl font-bold text-white"><Counter to={120} suffix="+" /></p>
-              <p className="text-xs text-zinc-400">itens inspecionados</p>
+              <p className="font-display text-3xl font-bold text-slate-900"><Counter to={120} suffix="+" /></p>
+              <p className="text-xs text-slate-600">itens inspecionados</p>
             </div>
           </Reveal>
         </div>
@@ -96,9 +96,9 @@ export function Benefits() {
             { n: 12, s: " meses", l: "de garantia no plano Total" },
           ].map((st, i) => (
             <Reveal key={st.l} delay={i * 90}>
-              <div className="rounded-3xl border border-white/10 bg-white/[0.02] p-6 text-center transition hover:border-emerald-400/30">
-                <p className="font-display text-3xl font-bold text-white sm:text-4xl"><Counter to={st.n} suffix={st.s} /></p>
-                <p className="mt-2 text-xs text-zinc-400 sm:text-sm">{st.l}</p>
+              <div className="rounded-3xl border border-slate-900/10 bg-white p-6 text-center transition hover:border-emerald-400/30">
+                <p className="font-display text-3xl font-bold text-slate-900 sm:text-4xl"><Counter to={st.n} suffix={st.s} /></p>
+                <p className="mt-2 text-xs text-slate-600 sm:text-sm">{st.l}</p>
               </div>
             </Reveal>
           ))}

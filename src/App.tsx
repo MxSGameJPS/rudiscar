@@ -20,7 +20,7 @@ function PublicLandingPage() {
     <>
       <a
         href="#main"
-        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-emerald-500 focus:px-4 focus:py-2 focus:font-semibold focus:text-ink-950"
+        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-emerald-500 focus:px-4 focus:py-2 focus:font-semibold focus:text-emerald-950"
       >
         Pular para o conteúdo
       </a>
@@ -47,10 +47,10 @@ function ProtectedAdminRoute() {
 
   if (loading) {
     return (
-      <div className="flex min-h-screen items-center justify-center bg-ink-950 text-white font-sans">
+      <div className="flex min-h-screen items-center justify-center bg-slate-50 text-slate-900 font-sans">
         <div className="flex flex-col items-center gap-3">
           <div className="h-8 w-8 animate-spin rounded-full border-2 border-emerald-400 border-t-transparent" />
-          <p className="text-xs text-zinc-400">Verificando autenticação do gestor...</p>
+          <p className="text-xs text-slate-600">Verificando autenticação do gestor...</p>
         </div>
       </div>
     );
