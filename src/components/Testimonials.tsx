@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Star, Quote, ChevronLeft, ChevronRight } from "lucide-react";
 import { Reveal, SectionHeading } from "./Reveal";
 import { cn } from "../utils/cn";
+import { fetchTestimonials } from "../services/vehiclesService";
 
 const TESTIMONIALS = [
   { name: "Juliana Schmitt", city: "Dois Irmãos", car: "Hyundai Creta 2022", text: "Já conhecia o Rudi da oficina, então comprar com ele foi natural. O carro veio impecável, com relatório de tudo que foi revisado. Confiança total." },
@@ -12,18 +13,21 @@ const TESTIMONIALS = [
 ];
 
 export function Testimonials() {
+  const [testimonials, setTestimonials] = useState<typeof TESTIMONIALS>([]);
   const [idx, setIdx] = useState(0);
+  useEffect(() => { fetchTestimonials().then((data) => setTestimonials((data || []).map((t: any) => ({ name: t.nome, city: t.cidade, car: t.carro, text: t.texto })))); }, []);
   const [paused, setPaused] = useState(false);
-  const total = TESTIMONIALS.length;
+  const total = testimonials.length;
 
   useEffect(() => {
-    if (paused) return;
+    if (paused || !total) return;
     const t = setInterval(() => setIdx((i) => (i + 1) % total), 6000);
     return () => clearInterval(t);
   }, [paused, total]);
 
   const go = (d: number) => setIdx((i) => (i + d + total) % total);
-  const t = TESTIMONIALS[idx];
+  const t = testimonials[idx];
+  if (!t) return null;
 
   return (
     <section id="depoimentos" className="relative py-24 sm:py-32" aria-labelledby="test-title">
@@ -72,7 +76,7 @@ export function Testimonials() {
               </figcaption>
             </figure>
             <div className="mt-6 flex justify-center gap-2" role="tablist" aria-label="Selecionar depoimento">
-              {TESTIMONIALS.map((_, i) => (
+              {testimonials.map((_, i) => (
                 <button
                   key={i}
                   role="tab"
