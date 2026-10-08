@@ -15,10 +15,10 @@ const LINKS = [
 export function Logo({ className }: { className?: string }) {
   return (
     <a href="#top" className={cn("group flex items-center gap-2.5", className)} aria-label="Rudi's Car - início">
-      <span className="relative grid h-9 w-9 place-items-center overflow-hidden rounded-xl bg-gradient-to-br from-emerald-300 to-emerald-600 font-display text-lg font-extrabold text-ink-950 shadow-lg shadow-emerald-500/30 transition-transform duration-500 group-hover:rotate-[-6deg] group-hover:scale-105">
+      <span className="relative grid h-9 w-9 place-items-center overflow-hidden rounded-xl bg-gradient-to-br from-emerald-300 to-emerald-600 font-display text-lg font-extrabold text-emerald-950 shadow-lg shadow-emerald-500/30 transition-transform duration-500 group-hover:rotate-[-6deg] group-hover:scale-105">
         R
       </span>
-      <span className="font-display text-lg font-bold tracking-tight text-white">
+      <span className="font-display text-lg font-bold tracking-tight text-slate-900">
         Rudi's <span className="text-emerald-400">Car</span>
       </span>
     </a>
@@ -59,7 +59,7 @@ export function Navbar() {
         aria-label="Navegação principal"
         className={cn(
           "mx-auto flex max-w-7xl items-center justify-between rounded-2xl px-4 py-3 transition-all duration-500 sm:px-5",
-          scrolled ? "glass shadow-2xl shadow-black/40" : "border border-transparent"
+          scrolled ? "glass shadow-2xl shadow-slate-900/40" : "border border-transparent"
         )}
       >
         <Logo />
@@ -70,7 +70,7 @@ export function Navbar() {
                 href={l.href}
                 className={cn(
                   "relative rounded-lg px-3.5 py-2 text-sm font-medium transition-colors duration-300",
-                  active === l.href ? "text-white" : "text-zinc-400 hover:text-white"
+                  active === l.href ? "text-slate-900" : "text-slate-600 hover:text-slate-900"
                 )}
               >
                 {l.label}
@@ -89,7 +89,7 @@ export function Navbar() {
             href={waLink()}
             target="_blank"
             rel="noopener noreferrer"
-            className="group relative hidden items-center gap-2 overflow-hidden rounded-xl bg-emerald-500 px-4 py-2.5 text-sm font-semibold text-ink-950 transition-all duration-300 hover:bg-emerald-400 hover:shadow-lg hover:shadow-emerald-500/30 sm:inline-flex"
+            className="group relative hidden items-center gap-2 overflow-hidden rounded-xl bg-emerald-500 px-4 py-2.5 text-sm font-semibold text-emerald-950 transition-all duration-300 hover:bg-emerald-400 hover:shadow-lg hover:shadow-emerald-500/30 sm:inline-flex"
           >
             <MessageCircle className="h-4 w-4" aria-hidden />
             Falar no WhatsApp
@@ -97,7 +97,7 @@ export function Navbar() {
           <button
             type="button"
             onClick={() => setOpen((o) => !o)}
-            className="grid h-10 w-10 place-items-center rounded-xl border border-white/10 text-white transition hover:bg-white/5 lg:hidden"
+            className="grid h-10 w-10 place-items-center rounded-xl border border-slate-900/10 text-slate-900 transition hover:bg-emerald-50 lg:hidden"
             aria-label={open ? "Fechar menu" : "Abrir menu"}
             aria-expanded={open}
             aria-controls="mobile-menu"
@@ -125,7 +125,7 @@ export function Navbar() {
               <a
                 href={l.href}
                 onClick={() => setOpen(false)}
-                className="block rounded-xl px-4 py-3 text-base font-medium text-zinc-200 hover:bg-white/5"
+                className="block rounded-xl px-4 py-3 text-base font-medium text-slate-800 hover:bg-emerald-50"
               >
                 {l.label}
               </a>
@@ -136,7 +136,7 @@ export function Navbar() {
               href={waLink()}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center gap-2 rounded-xl bg-emerald-500 px-4 py-3 font-semibold text-ink-950"
+              className="flex items-center justify-center gap-2 rounded-xl bg-emerald-500 px-4 py-3 font-semibold text-emerald-950"
             >
               <MessageCircle className="h-4 w-4" aria-hidden /> Falar no WhatsApp
             </a>
