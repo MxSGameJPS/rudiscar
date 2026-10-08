@@ -108,7 +108,7 @@ export function Hero() {
               style={{ transform: `scale(1.06) translate(${offset.x * -12}px, ${offset.y * -8}px)` }}
               fetchPriority="high"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/10 to-transparent" aria-hidden />
+            <div className="absolute inset-0 bg-gradient-to-t from-emerald-950/75 via-emerald-800/25 to-transparent" aria-hidden />
           </div>
 
           {/* Floating cards */}
