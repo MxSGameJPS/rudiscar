@@ -5,10 +5,10 @@ const BANKS = ["Santander", "Bradesco", "Itaú", "BV Financeira", "Sicredi", "Ba
 
 export function SocialProof() {
   return (
-    <section aria-label="Marcas e parceiros" className="relative border-y border-white/5 bg-ink-900/60 py-14">
+    <section aria-label="Marcas e parceiros" className="relative border-y border-slate-900/5 bg-white/60 py-14">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <Reveal>
-          <p className="text-center text-sm font-medium text-zinc-500">
+          <p className="text-center text-sm font-medium text-slate-500">
             Seminovos das principais marcas, financiados pelos maiores bancos do país
           </p>
         </Reveal>
@@ -19,7 +19,7 @@ export function SocialProof() {
             <span
               key={i}
               aria-hidden={i >= BRANDS.length}
-              className="whitespace-nowrap font-display text-2xl font-bold tracking-tight text-zinc-600 transition-colors duration-300 hover:text-white sm:text-3xl"
+              className="whitespace-nowrap font-display text-2xl font-bold tracking-tight text-slate-500 transition-colors duration-300 hover:text-slate-900 sm:text-3xl"
             >
               {b}
             </span>
@@ -30,7 +30,7 @@ export function SocialProof() {
         <Reveal delay={100}>
           <ul className="flex flex-wrap items-center justify-center gap-2.5">
             {BANKS.map((b) => (
-              <li key={b} className="rounded-full border border-white/10 bg-white/[0.03] px-4 py-1.5 text-xs font-medium text-zinc-400 sm:text-sm">
+              <li key={b} className="rounded-full border border-slate-900/10 bg-white px-4 py-1.5 text-xs font-medium text-slate-600 sm:text-sm">
                 {b}
               </li>
             ))}
