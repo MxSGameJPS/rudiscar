@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { Gauge, Fuel, Calendar, Cog, Heart, ArrowUpRight, MessageCircle } from "lucide-react";
 import { Reveal, SectionHeading } from "./Reveal";
-import { CARS, brl, waLink, type Car, type Category } from "../data";
+import { brl, waLink, type Car, type Category } from "../data";
 import { fetchVehicles } from "../services/vehiclesService";
 import { cn } from "../utils/cn";
 
@@ -79,10 +79,11 @@ function CarCard({ car }: { car: Car }) {
 
 export function Showcase() {
   const [filter, setFilter] = useState<(typeof FILTERS)[number]>("Todos");
-  const [carsList, setCarsList] = useState<Car[]>(CARS);
+  const [carsList, setCarsList] = useState<Car[]>([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetchVehicles().then((data) => setCarsList(data));
+    fetchVehicles().then(setCarsList).finally(() => setLoading(false));
   }, []);
 
   const cars = useMemo(() => (filter === "Todos" ? carsList : carsList.filter((c) => c.category === filter)), [filter, carsList]);
@@ -119,6 +120,8 @@ export function Showcase() {
         </div>
 
         <div key={filter} className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          {!loading && cars.length === 0 && <p className="col-span-full py-12 text-center text-slate-600">Nenhum veículo disponível neste momento. Fale conosco para conhecer as próximas novidades.</p>}
+          {loading && <p className="col-span-full py-12 text-center text-slate-600">Carregando estoque...</p>}
           {cars.map((car, i) => (
             <Reveal key={car.id} delay={(i % 4) * 80}>
               <CarCard car={car} />
