@@ -70,7 +70,7 @@ export function Benefits() {
               <img src={IMAGES.engine} alt="Mecânico revisando motor de um seminovo" loading="lazy" className="aspect-[4/5] w-full object-cover" />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/20 to-transparent" aria-hidden />
               <div className="glass absolute inset-x-5 bottom-5 rounded-2xl p-5">
-                <p className="text-sm font-semibold text-slate-900">Relatório de inspeção • Rudi's Car</p>
+                <p className="text-sm font-semibold text-white">Relatório de inspeção • Rudi's Car</p>
                 <ul className="mt-3 grid grid-cols-2 gap-2 text-xs text-slate-700">
                   {["Motor e arrefecimento", "Câmbio e embreagem", "Freios e pneus", "Suspensão e direção", "Parte elétrica", "Estrutura e pintura"].map((t) => (
                     <li key={t} className="flex items-center gap-1.5">
