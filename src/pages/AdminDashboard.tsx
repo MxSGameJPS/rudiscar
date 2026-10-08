@@ -66,7 +66,7 @@ export function AdminDashboard() {
   const [editingVeh, setEditingVeh] = useState<Partial<VehicleDB> | null>(null);
   const [uploadingImg, setUploadingImg] = useState(false);
   const [adminError, setAdminError] = useState<string | null>(null);
-  const [saving, setSaving] = useState(false);
+
   const [newOptional, setNewOptional] = useState("");
 
   // Testimonial Modal state
@@ -141,9 +141,7 @@ export function AdminDashboard() {
     if (!editingVeh.marca?.trim() || !editingVeh.modelo?.trim() || !(Number(editingVeh.preco) > 0)) {
       setAdminError("Preencha marca, modelo e um preço válido."); return;
     }
-    setSaving(true);
     const res = await saveVehicleAdmin(editingVeh);
-    setSaving(false);
     if (!res.error) {
       setVehModalOpen(false);
       setEditingVeh(null);
@@ -217,9 +215,7 @@ export function AdminDashboard() {
   const handleSaveTest = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!editingTest) return;
-    setSaving(true);
     const res = await saveTestimonialAdmin(editingTest);
-    setSaving(false);
     if (!res.error) {
       setTestModalOpen(false);
       setEditingTest(null);
@@ -271,7 +267,8 @@ export function AdminDashboard() {
   const newPropostasCount = propostas.filter((p) => p.status === "novo").length;
 
   return (
-    <div className="min-h-screen bg-slate-50 font-sans text-slate-900 flex flex-col">
+    <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-white to-green-50 font-sans text-slate-900 flex flex-col">
+      {adminError && <div role="alert" className="fixed inset-x-4 top-4 z-[200] mx-auto flex max-w-2xl items-center justify-between gap-4 rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm font-medium text-red-800 shadow-xl"><span>{adminError}</span><button type="button" onClick={() => setAdminError(null)} className="rounded-lg border border-red-200 px-3 py-1 hover:bg-red-100">Fechar</button></div>}
       {/* Background ambient lighting */}
       <div className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
         <div className="absolute -left-20 -top-20 h-96 w-96 rounded-full bg-emerald-500/10 blur-[150px]" />
