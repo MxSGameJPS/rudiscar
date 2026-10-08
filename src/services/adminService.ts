@@ -102,7 +102,7 @@ export async function fetchVehiclesAdmin(): Promise<VehicleDB[]> {
       .select("*")
       .order("criado_em", { ascending: false });
 
-    if (!error && data && data.length > 0) {
+    if (!error && data) {
       return data;
     }
   }
@@ -162,8 +162,9 @@ export async function saveVehicleAdmin(vehicle: Partial<VehicleDB>): Promise<{ d
 
 export async function deleteVehicleAdmin(id: string): Promise<{ error: string | null }> {
   if (isSupabaseConfigured && supabase && !id.startsWith("demo-")) {
-    const { error } = await supabase.from("veiculos").delete().eq("id", id);
+    const { data, error } = await supabase.from("veiculos").delete().eq("id", id).select("id");
     if (error) return { error: error.message };
+    if (!data?.length) return { error: "Nenhum veículo foi excluído. Verifique suas permissões." };
   }
   localVehicles = localVehicles.filter((v) => v.id !== id);
   return { error: null };
@@ -171,8 +172,9 @@ export async function deleteVehicleAdmin(id: string): Promise<{ error: string | 
 
 export async function toggleVehicleFieldAdmin(id: string, field: "vendido" | "destaque", val: boolean): Promise<{ error: string | null }> {
   if (isSupabaseConfigured && supabase && !id.startsWith("demo-")) {
-    const { error } = await supabase.from("veiculos").update({ [field]: val }).eq("id", id);
+    const { data, error } = await supabase.from("veiculos").update({ [field]: val }).eq("id", id).select("id");
     if (error) return { error: error.message };
+    if (!data?.length) return { error: "Nenhum veículo foi atualizado. Verifique suas permissões." };
   }
   localVehicles = localVehicles.map((v) => (v.id === id ? { ...v, [field]: val } : v));
   return { error: null };
@@ -207,7 +209,7 @@ export async function uploadVehicleImage(file: File): Promise<string | null> {
 export async function fetchTestimonialsAdmin(): Promise<TestimonialDB[]> {
   if (isSupabaseConfigured && supabase) {
     const { data, error } = await supabase.from("depoimentos").select("*").order("criado_em", { ascending: false });
-    if (!error && data && data.length > 0) return data;
+    if (!error && data) return data;
   }
   return localTestimonials;
 }
