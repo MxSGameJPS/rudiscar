@@ -36,7 +36,7 @@ function Counter({ to, suffix = "", duration = 1800 }: { to: number; suffix?: st
 
 export function Benefits() {
   return (
-    <section className="relative overflow-hidden border-y border-slate-900/5 bg-white/50 py-24 sm:py-32" aria-labelledby="benefits-title">
+    <section className="relative overflow-hidden border-y border-emerald-900/10 bg-emerald-50/20 py-24 sm:py-32" aria-labelledby="benefits-title">
       <div className="absolute -left-40 top-20 -z-0 h-96 w-96 rounded-full bg-emerald-500/10 blur-[120px] animate-blob" aria-hidden />
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
         <div className="grid items-center gap-14 lg:grid-cols-2 lg:gap-20">
@@ -68,7 +68,7 @@ export function Benefits() {
           <Reveal delay={150} className="relative">
             <div className="relative overflow-hidden rounded-3xl border border-slate-900/10">
               <img src={IMAGES.engine} alt="Mecânico revisando motor de um seminovo" loading="lazy" className="aspect-[4/5] w-full object-cover" />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/20 to-transparent" aria-hidden />
+              <div className="absolute inset-0 bg-gradient-to-t from-emerald-900/85 via-emerald-800/35 to-emerald-500/5" aria-hidden />
               <div className="glass absolute inset-x-5 bottom-5 rounded-2xl p-5">
                 <p className="text-sm font-semibold text-white">Relatório de inspeção • Rudi's Car</p>
                 <ul className="mt-3 grid grid-cols-2 gap-2 text-xs text-slate-700">
