@@ -1,0 +1,59 @@
+import { supabase, isSupabaseConfigured } from "../lib/supabase";
+import { CARS, type Car } from "../data";
+
+export async function fetchVehicles(): Promise<Car[]> {
+  if (!isSupabaseConfigured || !supabase) {
+    return CARS;
+  }
+
+  try {
+    const { data, error } = await supabase
+      .from("veiculos")
+      .select("*")
+      .eq("vendido", false)
+      .order("destaque", { ascending: false })
+      .order("criado_em", { ascending: false });
+
+    if (error || !data || data.length === 0) {
+      console.warn("Retornando estoque local por fallback:", error);
+      return CARS;
+    }
+
+    return data.map((v: any, index: number) => ({
+      id: v.id || index + 1,
+      name: v.nome || `${v.marca} ${v.modelo}`.trim(),
+      version: v.versao || "",
+      year: v.ano || (v.ano_fabricacao && v.ano_modelo ? `${v.ano_fabricacao}/${v.ano_modelo}` : ""),
+      km: v.km || (v.quilometragem ? `${v.quilometragem.toLocaleString("pt-BR")} km` : "0 km"),
+      fuel: v.combustivel || "Flex",
+      gear: v.cambio || "Manual",
+      price: Number(v.preco) || 0,
+      category: v.categoria || "SUV",
+      img: v.imagem_capa || (v.imagens && v.imagens[0]) || CARS[index % CARS.length].img,
+      tag: v.tag || (v.destaque ? "Destaque" : undefined),
+    }));
+  } catch (err) {
+    console.error("Erro ao buscar veículos do Supabase:", err);
+    return CARS;
+  }
+}
+
+export async function fetchTestimonials() {
+  if (!isSupabaseConfigured || !supabase) {
+    return null;
+  }
+
+  try {
+    const { data, error } = await supabase
+      .from("depoimentos")
+      .select("*")
+      .eq("ativo", true)
+      .order("criado_em", { ascending: false });
+
+    if (error || !data || data.length === 0) return null;
+    return data;
+  } catch (err) {
+    console.error("Erro ao buscar depoimentos do Supabase:", err);
+    return null;
+  }
+}
