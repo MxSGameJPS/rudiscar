@@ -18,7 +18,7 @@ function installment(price: number) {
 function CarCard({ car }: { car: Car }) {
   const [fav, setFav] = useState(false);
   return (
-    <article className="group relative flex h-full flex-col overflow-hidden rounded-3xl border border-white/10 bg-ink-900 transition-all duration-500 hover:-translate-y-1.5 hover:border-emerald-400/30 hover:shadow-2xl hover:shadow-emerald-500/10">
+    <article className="group relative flex h-full flex-col overflow-hidden rounded-3xl border border-slate-900/10 bg-white shadow-sm transition-all duration-500 hover:-translate-y-1.5 hover:border-emerald-400/30 hover:shadow-2xl hover:shadow-emerald-500/10">
       <div className="relative aspect-[4/3] overflow-hidden">
         <img
           src={car.img}
@@ -28,9 +28,9 @@ function CarCard({ car }: { car: Car }) {
         />
         <div className="absolute inset-0 bg-gradient-to-t from-ink-900 via-transparent to-transparent" aria-hidden />
         <div className="absolute left-3 top-3 flex gap-2">
-          <span className="glass rounded-full px-2.5 py-1 text-[11px] font-semibold text-white">{car.category}</span>
+          <span className="glass rounded-full px-2.5 py-1 text-[11px] font-semibold text-slate-900">{car.category}</span>
           {car.tag && (
-            <span className="rounded-full bg-emerald-500 px-2.5 py-1 text-[11px] font-bold text-ink-950">{car.tag}</span>
+            <span className="rounded-full bg-emerald-500 px-2.5 py-1 text-[11px] font-bold text-emerald-950">{car.tag}</span>
           )}
         </div>
         <button
@@ -38,27 +38,27 @@ function CarCard({ car }: { car: Car }) {
           onClick={() => setFav((f) => !f)}
           aria-pressed={fav}
           aria-label={fav ? `Remover ${car.name} dos favoritos` : `Favoritar ${car.name}`}
-          className="glass absolute right-3 top-3 grid h-9 w-9 place-items-center rounded-full text-white transition-transform duration-300 hover:scale-110 active:scale-90"
+          className="glass absolute right-3 top-3 grid h-9 w-9 place-items-center rounded-full text-slate-900 transition-transform duration-300 hover:scale-110 active:scale-90"
         >
           <Heart className={cn("h-4 w-4 transition-all duration-300", fav && "scale-110 fill-rose-500 text-rose-500")} aria-hidden />
         </button>
       </div>
 
       <div className="flex flex-1 flex-col p-5">
-        <h3 className="font-display text-lg font-bold text-white">{car.name}</h3>
-        <p className="text-sm text-zinc-400">{car.version}</p>
+        <h3 className="font-display text-lg font-bold text-slate-900">{car.name}</h3>
+        <p className="text-sm text-slate-600">{car.version}</p>
 
-        <dl className="mt-4 grid grid-cols-2 gap-x-3 gap-y-2 text-xs text-zinc-400">
+        <dl className="mt-4 grid grid-cols-2 gap-x-3 gap-y-2 text-xs text-slate-600">
           <div className="flex items-center gap-1.5"><Calendar className="h-3.5 w-3.5 text-emerald-400/80" aria-hidden /><dt className="sr-only">Ano</dt><dd>{car.year}</dd></div>
           <div className="flex items-center gap-1.5"><Gauge className="h-3.5 w-3.5 text-emerald-400/80" aria-hidden /><dt className="sr-only">Quilometragem</dt><dd>{car.km}</dd></div>
           <div className="flex items-center gap-1.5"><Fuel className="h-3.5 w-3.5 text-emerald-400/80" aria-hidden /><dt className="sr-only">Combustível</dt><dd>{car.fuel}</dd></div>
           <div className="flex items-center gap-1.5"><Cog className="h-3.5 w-3.5 text-emerald-400/80" aria-hidden /><dt className="sr-only">Câmbio</dt><dd>{car.gear}</dd></div>
         </dl>
 
-        <div className="mt-5 flex items-end justify-between border-t border-white/5 pt-4">
+        <div className="mt-5 flex items-end justify-between border-t border-slate-900/5 pt-4">
           <div>
-            <p className="font-display text-2xl font-bold text-white">{brl(car.price)}</p>
-            <p className="text-xs text-zinc-500">ou 48x de <span className="text-emerald-300">{brl(installment(car.price))}</span>*</p>
+            <p className="font-display text-2xl font-bold text-slate-900">{brl(car.price)}</p>
+            <p className="text-xs text-slate-500">ou 48x de <span className="text-emerald-300">{brl(installment(car.price))}</span>*</p>
           </div>
         </div>
 
@@ -66,7 +66,7 @@ function CarCard({ car }: { car: Car }) {
           href={waLink(`Olá! Tenho interesse no ${car.name} ${car.version} ${car.year} (${brl(car.price)}). Ainda está disponível?`)}
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-4 inline-flex items-center justify-center gap-2 rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm font-semibold text-white transition-all duration-300 group-hover:border-emerald-500 group-hover:bg-emerald-500 group-hover:text-ink-950"
+          className="mt-4 inline-flex items-center justify-center gap-2 rounded-xl border border-slate-900/10 bg-emerald-50 px-4 py-3 text-sm font-semibold text-slate-900 transition-all duration-300 group-hover:border-emerald-500 group-hover:bg-emerald-500 group-hover:text-emerald-950"
         >
           <MessageCircle className="h-4 w-4" aria-hidden />
           Tenho interesse
@@ -109,7 +109,7 @@ export function Showcase() {
                   onClick={() => setFilter(f)}
                   className={cn(
                     "rounded-xl px-4 py-2 text-sm font-medium transition-all duration-300",
-                    filter === f ? "bg-emerald-500 text-ink-950 shadow-lg shadow-emerald-500/20" : "text-zinc-400 hover:bg-white/5 hover:text-white"
+                    filter === f ? "bg-emerald-500 text-emerald-950 shadow-lg shadow-emerald-500/20" : "text-slate-600 hover:bg-emerald-50 hover:text-slate-900"
                   )}
                 >
                   {f}
@@ -134,12 +134,12 @@ export function Showcase() {
             href={waLink("Olá! Gostaria de receber a lista completa do estoque da Rudi's Car.")}
             target="_blank"
             rel="noopener noreferrer"
-            className="group inline-flex items-center gap-2 rounded-2xl border border-white/15 px-6 py-3.5 text-sm font-semibold text-white transition hover:border-emerald-400/50 hover:bg-white/5"
+            className="group inline-flex items-center gap-2 rounded-2xl border border-slate-900/15 px-6 py-3.5 text-sm font-semibold text-slate-900 transition hover:border-emerald-400/50 hover:bg-emerald-50"
           >
             Receber estoque completo no WhatsApp
             <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" aria-hidden />
           </a>
-          <p className="max-w-xl text-xs text-zinc-500">
+          <p className="max-w-xl text-xs text-slate-500">
             *Simulação com 20% de entrada em 48x, sujeita à aprovação de crédito. Imagens ilustrativas. Valores e disponibilidade podem mudar sem aviso prévio.
           </p>
         </Reveal>
