@@ -5,7 +5,7 @@ const BANKS = ["Santander", "Bradesco", "Itaú", "BV Financeira", "Sicredi", "Ba
 
 export function SocialProof() {
   return (
-    <section aria-label="Marcas e parceiros" className="relative border-y border-slate-900/5 bg-white/60 py-14">
+    <section aria-label="Marcas e parceiros" className="relative border-y border-slate-900/5 bg-emerald-50/40 py-14">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <Reveal>
           <p className="text-center text-sm font-medium text-slate-500">
