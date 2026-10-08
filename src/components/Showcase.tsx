@@ -26,7 +26,7 @@ function CarCard({ car }: { car: Car }) {
           loading="lazy"
           className="h-full w-full object-cover transition-transform duration-[1.2s] ease-out group-hover:scale-110"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-ink-900 via-transparent to-transparent" aria-hidden />
+        <div className="absolute inset-0 bg-gradient-to-t from-emerald-900/65 via-emerald-700/15 to-transparent" aria-hidden />
         <div className="absolute left-3 top-3 flex gap-2">
           <span className="glass rounded-full px-2.5 py-1 text-[11px] font-semibold text-slate-900">{car.category}</span>
           {car.tag && (
