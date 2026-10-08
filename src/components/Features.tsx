@@ -58,9 +58,9 @@ export function Features() {
                 src={IMAGES.workshop}
                 alt="Mecânico da Rudi's Car inspecionando carro elevado na oficina"
                 loading="lazy"
-                className="absolute inset-0 h-full w-full object-cover opacity-50 transition-transform duration-[1.5s] group-hover:scale-105"
+                className="absolute inset-0 h-full w-full object-cover opacity-90 transition-transform duration-[1.5s] group-hover:scale-105"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-ink-950 via-ink-950/70 to-ink-950/10" aria-hidden />
+              <div className="absolute inset-0 bg-gradient-to-t from-emerald-50/95 via-emerald-100/65 to-emerald-600/20" aria-hidden />
               <div className="relative p-7 sm:p-10">
                 <span className="grid h-12 w-12 place-items-center rounded-2xl bg-emerald-500 text-emerald-950 shadow-lg shadow-emerald-500/30">
                   <Wrench className="h-6 w-6" aria-hidden />
