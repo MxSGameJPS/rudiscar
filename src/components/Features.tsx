@@ -26,7 +26,7 @@ function SpotlightCard({ children, className }: { children: React.ReactNode; cla
     <div
       onMouseMove={onMove}
       className={cn(
-        "group relative h-full overflow-hidden rounded-3xl border border-white/10 bg-white/[0.03] transition-all duration-500 hover:-translate-y-1 hover:border-emerald-400/30",
+        "group relative h-full overflow-hidden rounded-3xl border border-slate-900/10 bg-white/[0.03] transition-all duration-500 hover:-translate-y-1 hover:border-emerald-400/30",
         className
       )}
     >
@@ -62,17 +62,17 @@ export function Features() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-ink-950 via-ink-950/70 to-ink-950/10" aria-hidden />
               <div className="relative p-7 sm:p-10">
-                <span className="grid h-12 w-12 place-items-center rounded-2xl bg-emerald-500 text-ink-950 shadow-lg shadow-emerald-500/30">
+                <span className="grid h-12 w-12 place-items-center rounded-2xl bg-emerald-500 text-emerald-950 shadow-lg shadow-emerald-500/30">
                   <Wrench className="h-6 w-6" aria-hidden />
                 </span>
-                <h3 className="mt-5 font-display text-2xl font-bold text-white sm:text-3xl">Revisado na nossa própria oficina</h3>
-                <p className="mt-3 max-w-lg text-zinc-300">
+                <h3 className="mt-5 font-display text-2xl font-bold text-slate-900 sm:text-3xl">Revisado na nossa própria oficina</h3>
+                <p className="mt-3 max-w-lg text-slate-700">
                   Motor, câmbio, suspensão, freios, elétrica e ar-condicionado. Cada carro sobe no elevador e só vai para
                   o pátio depois de aprovado pelos nossos mecânicos.
                 </p>
                 <div className="mt-6 flex flex-wrap gap-2">
                   {["Motor", "Câmbio", "Freios", "Suspensão", "Elétrica", "Ar-condicionado"].map((t) => (
-                    <span key={t} className="rounded-full border border-white/15 bg-white/5 px-3 py-1 text-xs text-zinc-200 backdrop-blur">
+                    <span key={t} className="rounded-full border border-slate-900/15 bg-emerald-50 px-3 py-1 text-xs text-slate-800 backdrop-blur">
                       ✓ {t}
                     </span>
                   ))}
@@ -86,8 +86,8 @@ export function Features() {
               <span className="grid h-11 w-11 place-items-center rounded-xl bg-emerald-500/15 text-emerald-300 ring-1 ring-emerald-400/20">
                 <ShieldCheck className="h-5 w-5" aria-hidden />
               </span>
-              <h3 className="mt-5 font-display text-xl font-bold text-white">Garantia de verdade</h3>
-              <p className="mt-2 text-sm leading-relaxed text-zinc-400">
+              <h3 className="mt-5 font-display text-xl font-bold text-slate-900">Garantia de verdade</h3>
+              <p className="mt-2 text-sm leading-relaxed text-slate-600">
                 Até 12 meses de garantia de motor e câmbio — e quem cuida da manutenção somos nós mesmos.
               </p>
               <div className="mt-6 flex items-end gap-1.5" aria-hidden>
@@ -105,8 +105,8 @@ export function Features() {
           <Reveal delay={200} className="md:col-span-2">
             <SpotlightCard className="p-7">
               <p className="font-display text-5xl font-extrabold text-gradient">0%</p>
-              <h3 className="mt-3 font-display text-xl font-bold text-white">Surpresa depois da compra</h3>
-              <p className="mt-2 text-sm leading-relaxed text-zinc-400">
+              <h3 className="mt-3 font-display text-xl font-bold text-slate-900">Surpresa depois da compra</h3>
+              <p className="mt-2 text-sm leading-relaxed text-slate-600">
                 Relatório de inspeção entregue junto com a chave. Você sabe exatamente o que está levando.
               </p>
             </SpotlightCard>
@@ -117,11 +117,11 @@ export function Features() {
           {FEATURES.map((f, i) => (
             <Reveal key={f.title} delay={i * 90}>
               <SpotlightCard className="p-6">
-                <span className="grid h-11 w-11 place-items-center rounded-xl bg-white/5 text-emerald-300 ring-1 ring-white/10 transition-all duration-500 group-hover:bg-emerald-500 group-hover:text-ink-950 group-hover:ring-emerald-400">
+                <span className="grid h-11 w-11 place-items-center rounded-xl bg-emerald-50 text-emerald-300 ring-1 ring-white/10 transition-all duration-500 group-hover:bg-emerald-500 group-hover:text-emerald-950 group-hover:ring-emerald-400">
                   <f.icon className="h-5 w-5" aria-hidden />
                 </span>
-                <h3 className="mt-5 font-display text-lg font-semibold text-white">{f.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-zinc-400">{f.text}</p>
+                <h3 className="mt-5 font-display text-lg font-semibold text-slate-900">{f.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-slate-600">{f.text}</p>
               </SpotlightCard>
             </Reveal>
           ))}
