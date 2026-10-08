@@ -65,6 +65,8 @@ export function AdminDashboard() {
   const [vehModalOpen, setVehModalOpen] = useState(false);
   const [editingVeh, setEditingVeh] = useState<Partial<VehicleDB> | null>(null);
   const [uploadingImg, setUploadingImg] = useState(false);
+  const [adminError, setAdminError] = useState<string | null>(null);
+  const [saving, setSaving] = useState(false);
   const [newOptional, setNewOptional] = useState("");
 
   // Testimonial Modal state
@@ -74,16 +76,20 @@ export function AdminDashboard() {
   // Initial load
   const loadData = async () => {
     setRefreshing(true);
-    const [vData, tData, pData] = await Promise.all([
-      fetchVehiclesAdmin(),
-      fetchTestimonialsAdmin(),
-      fetchPropostasAdmin(),
-    ]);
-    setVehicles(vData);
-    setTestimonials(tData);
-    setPropostas(pData);
-    setLoading(false);
-    setRefreshing(false);
+    setAdminError(null);
+    try {
+      const [vData, tData, pData] = await Promise.all([
+        fetchVehiclesAdmin(), fetchTestimonialsAdmin(), fetchPropostasAdmin(),
+      ]);
+      setVehicles(vData);
+      setTestimonials(tData);
+      setPropostas(pData);
+    } catch (error) {
+      setAdminError(error instanceof Error ? error.message : "Falha ao carregar os dados.");
+    } finally {
+      setLoading(false);
+      setRefreshing(false);
+    }
   };
 
   useEffect(() => {
@@ -132,7 +138,12 @@ export function AdminDashboard() {
   const handleSaveVeh = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!editingVeh) return;
+    if (!editingVeh.marca?.trim() || !editingVeh.modelo?.trim() || !(Number(editingVeh.preco) > 0)) {
+      setAdminError("Preencha marca, modelo e um preço válido."); return;
+    }
+    setSaving(true);
     const res = await saveVehicleAdmin(editingVeh);
+    setSaving(false);
     if (!res.error) {
       setVehModalOpen(false);
       setEditingVeh(null);
@@ -144,20 +155,26 @@ export function AdminDashboard() {
 
   const handleDeleteVeh = async (id: string) => {
     if (confirm("Tem certeza que deseja excluir este veículo do estoque?")) {
-      await deleteVehicleAdmin(id);
-      loadData();
+      const result = await deleteVehicleAdmin(id);
+      if (result.error) setAdminError(result.error);
+      else await loadData();
     }
   };
 
   const handleToggleVehField = async (id: string, field: "vendido" | "destaque", currentVal: boolean) => {
-    await toggleVehicleFieldAdmin(id, field, !currentVal);
-    loadData();
+    const result = await toggleVehicleFieldAdmin(id, field, !currentVal);
+    if (result.error) setAdminError(result.error);
+    else await loadData();
   };
 
   const handleImageFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
     setUploadingImg(true);
+    if (!["image/jpeg", "image/png", "image/webp"].includes(file.type) || file.size > 8 * 1024 * 1024) {
+      setUploadingImg(false);
+      setAdminError("A imagem deve ser JPG, PNG ou WebP e ter no máximo 8 MB."); return;
+    }
     const url = await uploadVehicleImage(file);
     setUploadingImg(false);
     if (url) {
@@ -200,7 +217,9 @@ export function AdminDashboard() {
   const handleSaveTest = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!editingTest) return;
+    setSaving(true);
     const res = await saveTestimonialAdmin(editingTest);
+    setSaving(false);
     if (!res.error) {
       setTestModalOpen(false);
       setEditingTest(null);
@@ -212,21 +231,24 @@ export function AdminDashboard() {
 
   const handleDeleteTest = async (id: string) => {
     if (confirm("Deseja excluir este depoimento?")) {
-      await deleteTestimonialAdmin(id);
-      loadData();
+      const result = await deleteTestimonialAdmin(id);
+      if (result.error) setAdminError(result.error);
+      else await loadData();
     }
   };
 
   // --- PROPOSTAS HANDLERS ---
   const handleStatusChange = async (id: string, status: PropostaDB["status"]) => {
-    await updatePropostaStatusAdmin(id, status);
-    loadData();
+    const result = await updatePropostaStatusAdmin(id, status);
+    if (result.error) setAdminError(result.error);
+    else await loadData();
   };
 
   const handleDeleteProposta = async (id: string) => {
     if (confirm("Excluir esta proposta?")) {
-      await deletePropostaAdmin(id);
-      loadData();
+      const result = await deletePropostaAdmin(id);
+      if (result.error) setAdminError(result.error);
+      else await loadData();
     }
   };
 
