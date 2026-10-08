@@ -1,9 +1,9 @@
 import { supabase, isSupabaseConfigured } from "../lib/supabase";
-import { CARS, type Car } from "../data";
+import { type Car } from "../data";
 
 export async function fetchVehicles(): Promise<Car[]> {
   if (!isSupabaseConfigured || !supabase) {
-    return CARS;
+    return [];
   }
 
   try {
@@ -14,13 +14,13 @@ export async function fetchVehicles(): Promise<Car[]> {
       .order("destaque", { ascending: false })
       .order("criado_em", { ascending: false });
 
-    if (error || !data || data.length === 0) {
+    if (error) {
       console.warn("Retornando estoque local por fallback:", error);
-      return CARS;
+      return [];
     }
 
-    return data.map((v: any, index: number) => ({
-      id: v.id || index + 1,
+    return (data || []).map((v: any, index: number) => ({
+      id: v.id || String(index + 1),
       name: v.nome || `${v.marca} ${v.modelo}`.trim(),
       version: v.versao || "",
       year: v.ano || (v.ano_fabricacao && v.ano_modelo ? `${v.ano_fabricacao}/${v.ano_modelo}` : ""),
@@ -29,12 +29,12 @@ export async function fetchVehicles(): Promise<Car[]> {
       gear: v.cambio || "Manual",
       price: Number(v.preco) || 0,
       category: v.categoria || "SUV",
-      img: v.imagem_capa || (v.imagens && v.imagens[0]) || CARS[index % CARS.length].img,
+      img: v.imagem_capa || (v.imagens && v.imagens[0]) || "",
       tag: v.tag || (v.destaque ? "Destaque" : undefined),
     }));
   } catch (err) {
     console.error("Erro ao buscar veículos do Supabase:", err);
-    return CARS;
+    return [];
   }
 }
 
