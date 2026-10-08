@@ -29,7 +29,7 @@ export function Login() {
 
 
   return (
-    <div className="relative min-h-screen w-full bg-ink-950 text-slate-900 flex flex-col justify-between overflow-x-hidden font-sans">
+    <div className="relative min-h-screen w-full bg-slate-50 text-slate-900 flex flex-col justify-between overflow-x-hidden font-sans">
       {/* Glow ambient background elements */}
       <div className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
         <div className="absolute -left-20 -top-20 h-96 w-96 rounded-full bg-emerald-500/15 blur-[140px] animate-blob" />
@@ -63,7 +63,7 @@ export function Login() {
           <div className="absolute -right-16 -top-16 h-44 w-44 rounded-full bg-emerald-500/20 blur-3xl pointer-events-none" />
 
           {/* Badge Icon */}
-          <div className="mx-auto mb-6 flex h-14 w-14 items-center justify-center rounded-2xl border border-emerald-400/30 bg-emerald-500/10 text-emerald-400 shadow-inner">
+          <div className="mx-auto mb-6 flex h-14 w-14 items-center justify-center rounded-2xl border border-emerald-400/30 bg-emerald-500/10 text-emerald-700 shadow-inner">
             <ShieldCheck className="h-7 w-7" />
           </div>
 
@@ -94,7 +94,7 @@ export function Login() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="admin@rudiscar.com.br"
-                  className="w-full rounded-2xl border border-slate-900/10 bg-ink-900/80 py-3.5 pl-11 pr-4 text-sm text-slate-900 placeholder-zinc-500 outline-none transition focus:border-emerald-400 focus:bg-ink-900 focus:ring-2 focus:ring-emerald-500/20"
+                  className="w-full rounded-2xl border border-slate-900/10 bg-white/80 py-3.5 pl-11 pr-4 text-sm text-slate-900 placeholder-slate-500 outline-none transition focus:border-emerald-400 focus:bg-white focus:ring-2 focus:ring-emerald-500/20"
                 />
               </div>
             </div>
@@ -110,7 +110,7 @@ export function Login() {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="••••••••"
-                  className="w-full rounded-2xl border border-slate-900/10 bg-ink-900/80 py-3.5 pl-11 pr-11 text-sm text-slate-900 placeholder-zinc-500 outline-none transition focus:border-emerald-400 focus:bg-ink-900 focus:ring-2 focus:ring-emerald-500/20"
+                  className="w-full rounded-2xl border border-slate-900/10 bg-white/80 py-3.5 pl-11 pr-11 text-sm text-slate-900 placeholder-slate-500 outline-none transition focus:border-emerald-400 focus:bg-white focus:ring-2 focus:ring-emerald-500/20"
                 />
                 <button
                   type="button"
