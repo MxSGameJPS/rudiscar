@@ -16,7 +16,7 @@ const FAQS = [
 export function FAQ() {
   const [open, setOpen] = useState<number | null>(0);
   return (
-    <section id="faq" className="relative border-t border-white/5 py-24 sm:py-32" aria-labelledby="faq-title">
+    <section id="faq" className="relative border-t border-slate-900/5 py-24 sm:py-32" aria-labelledby="faq-title">
       <div className="mx-auto grid max-w-7xl gap-12 px-5 sm:px-8 lg:grid-cols-[1fr_1.4fr] lg:gap-20">
         <div className="lg:sticky lg:top-32 lg:self-start">
           <SectionHeading
@@ -30,7 +30,7 @@ export function FAQ() {
               href={waLink("Olá! Tenho uma dúvida sobre os seminovos da Rudi's Car.")}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-8 inline-flex items-center gap-2 rounded-xl border border-white/15 px-5 py-3 text-sm font-semibold text-white transition hover:border-emerald-400/50 hover:bg-white/5"
+              className="mt-8 inline-flex items-center gap-2 rounded-xl border border-slate-900/15 px-5 py-3 text-sm font-semibold text-slate-900 transition hover:border-emerald-400/50 hover:bg-emerald-50"
             >
               Perguntar no WhatsApp →
             </a>
@@ -42,7 +42,7 @@ export function FAQ() {
             const isOpen = open === i;
             return (
               <Reveal key={f.q} delay={i * 70}>
-                <div className={cn("rounded-2xl border transition-all duration-500", isOpen ? "border-emerald-400/30 bg-white/[0.04]" : "border-white/10 bg-white/[0.02] hover:border-white/20")}>
+                <div className={cn("rounded-2xl border transition-all duration-500", isOpen ? "border-emerald-400/30 bg-emerald-50" : "border-slate-900/10 bg-white hover:border-slate-900/20")}>
                   <h3>
                     <button
                       type="button"
@@ -52,8 +52,8 @@ export function FAQ() {
                       onClick={() => setOpen(isOpen ? null : i)}
                       className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left"
                     >
-                      <span className="font-display text-base font-semibold text-white sm:text-lg">{f.q}</span>
-                      <span className={cn("grid h-8 w-8 shrink-0 place-items-center rounded-full border transition-all duration-500", isOpen ? "rotate-45 border-emerald-400 bg-emerald-500 text-ink-950" : "border-white/15 text-white")}>
+                      <span className="font-display text-base font-semibold text-slate-900 sm:text-lg">{f.q}</span>
+                      <span className={cn("grid h-8 w-8 shrink-0 place-items-center rounded-full border transition-all duration-500", isOpen ? "rotate-45 border-emerald-400 bg-emerald-500 text-emerald-950" : "border-slate-900/15 text-slate-900")}>
                         <Plus className="h-4 w-4" aria-hidden />
                       </span>
                     </button>
@@ -65,7 +65,7 @@ export function FAQ() {
                     className={cn("grid transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]", isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0")}
                   >
                     <div className="overflow-hidden">
-                      <p className="px-6 pb-6 text-sm leading-relaxed text-zinc-400 sm:text-base">{f.a}</p>
+                      <p className="px-6 pb-6 text-sm leading-relaxed text-slate-600 sm:text-base">{f.a}</p>
                     </div>
                   </div>
                 </div>
