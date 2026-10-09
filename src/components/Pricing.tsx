@@ -78,9 +78,9 @@ function Simulator() {
             rel="noopener noreferrer"
             className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-emerald-500 px-5 py-3.5 font-semibold text-emerald-950 transition hover:-translate-y-0.5 hover:bg-emerald-400 hover:shadow-lg hover:shadow-emerald-500/30"
           >
-            <MessageCircle className="h-4 w-4" aria-hidden /> Aprovar meu crédito
+            <MessageCircle className="h-4 w-4" aria-hidden /> Consultar condições
           </a>
-          <p className="mt-4 text-[11px] leading-relaxed text-slate-500">Taxa referencial de 1,49% a.m. Simulação ilustrativa, sujeita à análise de crédito.</p>
+          <p className="mt-4 text-[11px] leading-relaxed text-slate-500">Taxa hipotética usada exclusivamente para ilustração. Não constitui oferta de crédito; consulte taxas e condições reais com a equipe.</p>
         </div>
       </div>
     </div>
@@ -93,9 +93,9 @@ export function Pricing() {
       <div className="absolute inset-x-0 top-1/3 -z-10 mx-auto h-[500px] max-w-4xl rounded-full bg-emerald-500/10 blur-[140px]" aria-hidden />
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <SectionHeading
-          eyebrow="Planos de proteção"
-          title={<span id="pricing-title">Compre com garantia. <span className="text-gradient">Rode com tranquilidade.</span></span>}
-          subtitle="Todo carro já sai com o plano Essencial. Quer ir além? Escolha a proteção ideal para o seu dia a dia."
+          eyebrow="Condições de compra"
+          title={<span id="pricing-title">Planeje sua compra. <span className="text-gradient">Converse com a equipe.</span></span>}
+          subtitle="Consulte as condições disponíveis para o veículo desejado antes de decidir."
         />
         <Reveal delay={100} className="mt-16">
           <Simulator />
