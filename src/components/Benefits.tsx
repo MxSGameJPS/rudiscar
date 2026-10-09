@@ -5,9 +5,9 @@ import { IMAGES } from "../data";
 
 const STEPS = [
   { icon: Search, title: "Escolha o carro", text: "Navegue pelo estoque ou conte pra gente o que procura. Encontramos para você." },
-  { icon: ClipboardCheck, title: "Veja o laudo", text: "Receba o relatório de inspeção da nossa oficina e faça o test-drive sem compromisso." },
-  { icon: CreditCard, title: "Feche do seu jeito", text: "À vista, financiado ou com seu usado na troca. Crédito analisado rapidinho." },
-  { icon: KeyRound, title: "Saia dirigindo", text: "Documentação por nossa conta. Você só pega a chave e aproveita." },
+  { icon: ClipboardCheck, title: "Converse com nossa equipe", text: "Tire dúvidas e confirme a disponibilidade antes de agendar sua visita." },
+  { icon: CreditCard, title: "Feche do seu jeito", text: "À vista, financiado ou com seu usado na troca. Condições sujeitas a consulta e análise." },
+  { icon: KeyRound, title: "Saia dirigindo", text: "Consulte nossa equipe sobre documentos e etapas da negociação." },
 ];
 
 function Counter({ to, suffix = "", duration = 1800 }: { to: number; suffix?: string; duration?: number }) {
@@ -67,10 +67,10 @@ export function Benefits() {
 
           <Reveal delay={150} className="relative">
             <div className="relative overflow-hidden rounded-3xl border border-slate-900/10">
-              <img src={IMAGES.engine} alt="Mecânico revisando motor de um seminovo" loading="lazy" className="aspect-[4/5] w-full object-cover" />
+              <img src={IMAGES.keys} alt="Imagem ilustrativa de chaves de veículo" loading="lazy" className="aspect-[4/5] w-full object-cover" />
               <div className="absolute inset-0 bg-gradient-to-t from-emerald-900/85 via-emerald-800/35 to-emerald-500/5" aria-hidden />
               <div className="glass absolute inset-x-5 bottom-5 rounded-2xl p-5">
-                <p className="text-sm font-semibold text-white">Relatório de inspeção • Rudi's Car</p>
+                <p className="text-sm font-semibold text-white">Seu próximo veículo • Rudi's Car</p>
                 <ul className="mt-3 grid grid-cols-2 gap-2 text-xs text-slate-700">
                   {["Motor e arrefecimento", "Câmbio e embreagem", "Freios e pneus", "Suspensão e direção", "Parte elétrica", "Estrutura e pintura"].map((t) => (
                     <li key={t} className="flex items-center gap-1.5">
@@ -83,17 +83,17 @@ export function Benefits() {
             </div>
             <div className="glass absolute -right-3 -top-5 animate-float rounded-2xl px-5 py-4 sm:-right-6">
               <p className="font-display text-3xl font-bold text-slate-900"><Counter to={120} suffix="+" /></p>
-              <p className="text-xs text-slate-600">itens inspecionados</p>
+              <p className="text-xs text-slate-600">opções para conhecer</p>
             </div>
           </Reveal>
         </div>
 
         <div className="mt-20 grid grid-cols-2 gap-5 lg:grid-cols-4">
           {[
-            { n: 20, s: "+", l: "anos de experiência automotiva" },
-            { n: 2500, s: "+", l: "clientes satisfeitos" },
-            { n: 98, s: "%", l: "recomendariam a um amigo" },
-            { n: 12, s: " meses", l: "de garantia no plano Total" },
+            { n: 20, s: "+", l: "atendimento em Dois Irmãos" },
+            { n: 2500, s: "+", l: "veículos no estoque" },
+            { n: 98, s: "%", l: "converse com a equipe" },
+            { n: 12, s: " meses", l: "consulte condições da compra" },
           ].map((st, i) => (
             <Reveal key={st.l} delay={i * 90}>
               <div className="rounded-3xl border border-slate-900/10 bg-white p-6 text-center transition hover:border-emerald-400/30">
