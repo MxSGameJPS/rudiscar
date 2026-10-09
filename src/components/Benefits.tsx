@@ -3,9 +3,9 @@ import { Reveal, SectionHeading } from "./Reveal";
 import { IMAGES } from "../data";
 
 const STEPS = [
-  { icon: Search, title: "Escolha o carro", text: "Navegue pelo estoque ou conte pra gente o que procura. Encontramos para você." },
+  { icon: Search, title: "Escolha o carro", text: "Confira os modelos anunciados ou conte à equipe o que está procurando." },
   { icon: MessageCircle, title: "Converse com nossa equipe", text: "Tire dúvidas e confirme a disponibilidade antes de agendar sua visita." },
-  { icon: CreditCard, title: "Feche do seu jeito", text: "À vista, financiado ou com seu usado na troca. Condições sujeitas a consulta e análise." },
+  { icon: CreditCard, title: "Feche do seu jeito", text: "Converse com a equipe sobre condições de pagamento e eventual negociação de usados." },
   { icon: KeyRound, title: "Saia dirigindo", text: "Consulte nossa equipe sobre documentos e etapas da negociação." },
 ];
 
