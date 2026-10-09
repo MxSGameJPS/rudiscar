@@ -12,12 +12,12 @@ export function CTA() {
           <div className="absolute -left-20 -top-20 -z-10 h-72 w-72 rounded-full bg-emerald-400/30 blur-3xl animate-blob" aria-hidden />
           <div className="absolute -bottom-24 -right-10 -z-10 h-72 w-72 rounded-full bg-teal-300/20 blur-3xl animate-blob [animation-delay:-8s]" aria-hidden />
 
-          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-emerald-200">Seu carro novo está esperando</p>
-          <h2 id="cta-title" className="mx-auto mt-5 max-w-3xl font-display text-3xl font-extrabold leading-tight tracking-tight text-slate-900 sm:text-5xl lg:text-6xl">
-            Venha tomar um café e sair de carro novo.
+          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-emerald-200">Confira o estoque da Rudi's Car</p>
+          <h2 id="cta-title" className="mx-auto mt-5 max-w-3xl font-display text-3xl font-extrabold leading-tight tracking-tight text-white sm:text-5xl lg:text-6xl">
+            O próximo passo é conhecer seu próximo carro.
           </h2>
-          <p className="mx-auto mt-6 max-w-xl text-base text-slate-700 sm:text-lg">
-            Fale agora com a nossa equipe, avalie seu usado e garanta condições especiais válidas para este mês.
+          <p className="mx-auto mt-6 max-w-xl text-base text-emerald-50 sm:text-lg">
+            Converse com nossa equipe para conhecer os veículos anunciados, consultar disponibilidade e esclarecer dúvidas sobre a negociação.
           </p>
           <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <a
