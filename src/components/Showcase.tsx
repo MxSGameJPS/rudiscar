@@ -7,14 +7,6 @@ import { cn } from "../utils/cn";
 
 const FILTERS: ("Todos" | Category)[] = ["Todos", "SUV", "Sedã", "Hatch", "Picape"];
 
-function installment(price: number) {
-  // 20% down, 48x at ~1.49% a.m.
-  const pv = price * 0.8;
-  const i = 0.0149;
-  const n = 48;
-  return (pv * i) / (1 - Math.pow(1 + i, -n));
-}
-
 function CarCard({ car }: { car: Car }) {
   const [fav, setFav] = useState(false);
   return (
@@ -58,7 +50,7 @@ function CarCard({ car }: { car: Car }) {
         <div className="mt-5 flex items-end justify-between border-t border-slate-900/5 pt-4">
           <div>
             <p className="font-display text-2xl font-bold text-slate-900">{brl(car.price)}</p>
-            <p className="text-xs text-slate-500">ou 48x de <span className="text-emerald-300">{brl(installment(car.price))}</span>*</p>
+            <p className="text-xs text-slate-500">Consulte condições de pagamento</p>
           </div>
         </div>
 
