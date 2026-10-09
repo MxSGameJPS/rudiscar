@@ -14,7 +14,7 @@ export function Footer() {
               Visite nossa loja em Dois Irmãos.
             </h2>
             <p className="mt-3 max-w-md text-slate-600">
-              Seminovos revisados e oficina mecânica completa no mesmo endereço. Venha conhecer.
+              Revenda de veículos em Dois Irmãos, RS. Consulte os anúncios e converse com nossa equipe.
             </p>
 
             <ul className="mt-8 space-y-5">
@@ -76,7 +76,7 @@ export function Footer() {
 
         <div className="mt-16 flex flex-col items-center justify-between gap-6 border-t border-slate-900/5 py-8 sm:flex-row">
           <p className="text-center text-sm text-slate-500">
-            © {new Date().getFullYear()} Rudi's Car — Seminovos & Mecânica Automotiva. Dois Irmãos/RS.
+            © {new Date().getFullYear()} Rudi's Car — Revenda de Veículos. Dois Irmãos/RS.
             <a href="#/admin" className="ml-3 text-xs text-slate-500 hover:text-emerald-700 transition underline underline-offset-2">
               Área do Gestor
             </a>
