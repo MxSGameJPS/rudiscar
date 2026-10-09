@@ -2,11 +2,9 @@ import { HashRouter, Routes, Route, Navigate } from "react-router-dom";
 import { AuthProvider, useAuth } from "./context/AuthContext";
 import { Navbar } from "./components/Navbar";
 import { Hero } from "./components/Hero";
-import { SocialProof } from "./components/SocialProof";
 import { Features } from "./components/Features";
 import { Showcase } from "./components/Showcase";
 import { Benefits } from "./components/Benefits";
-import { Testimonials } from "./components/Testimonials";
 import { Pricing } from "./components/Pricing";
 import { FAQ } from "./components/FAQ";
 import { CTA } from "./components/CTA";
@@ -27,11 +25,9 @@ function PublicLandingPage() {
       <Navbar />
       <main id="main" className="overflow-x-clip">
         <Hero />
-        <SocialProof />
         <Showcase />
         <Features />
         <Benefits />
-        <Testimonials />
         <Pricing />
         <FAQ />
         <CTA />
