@@ -1,4 +1,4 @@
-import { Wrench, ShieldCheck, FileSearch, Handshake, Landmark, Repeat, type LucideIcon } from "lucide-react";
+import { CarFront, Search, MessageCircle, Handshake, MapPin, Repeat, type LucideIcon } from "lucide-react";
 import { Reveal, SectionHeading } from "./Reveal";
 import { IMAGES } from "../data";
 import { cn } from "../utils/cn";
@@ -10,10 +10,10 @@ interface Feature {
 }
 
 const FEATURES: Feature[] = [
-  { icon: FileSearch, title: "Procedência 100% checada", text: "Consulta de sinistro, leilão, multas, gravames e laudo cautelar em todos os veículos." },
-  { icon: Landmark, title: "Crédito facilitado", text: "Trabalhamos com os principais bancos para aprovar seu financiamento com as melhores taxas." },
-  { icon: Repeat, title: "Seu usado vale mais", text: "Avaliação justa e transparente. Aceitamos seu carro como parte do pagamento." },
-  { icon: Handshake, title: "Atendimento de família", text: "Negócio olho no olho, sem pressão. Você fala direto com quem entende de carro." },
+  { icon: Search, title: "Consulte o estoque", text: "Veja modelos, fotos e preços cadastrados diretamente no site." },
+  { icon: MessageCircle, title: "Atendimento pelo WhatsApp", text: "Tire dúvidas sobre os anúncios com nossa equipe." },
+  { icon: Repeat, title: "Quer oferecer seu usado?", text: "Consulte a possibilidade de negociar seu veículo na compra." },
+  { icon: MapPin, title: "Visite a revenda", text: "Estamos em Dois Irmãos, RS. Entre em contato antes de visitar." },
 ];
 
 function SpotlightCard({ children, className }: { children: React.ReactNode; className?: string }) {
@@ -63,14 +63,14 @@ export function Features() {
               <div className="absolute inset-0 bg-gradient-to-t from-emerald-50/95 via-emerald-100/65 to-emerald-600/20" aria-hidden />
               <div className="relative p-7 sm:p-10">
                 <span className="grid h-12 w-12 place-items-center rounded-2xl bg-emerald-500 text-emerald-950 shadow-lg shadow-emerald-500/30">
-                  <Wrench className="h-6 w-6" aria-hidden />
+                  <CarFront className="h-6 w-6" aria-hidden />
                 </span>
                 <h3 className="mt-5 font-display text-2xl font-bold text-slate-900 sm:text-3xl">Encontre o veículo certo para você</h3>
                 <p className="mt-3 max-w-lg text-slate-700">
                   Conheça as opções anunciadas, confira preços e informações e fale com a equipe antes de decidir.
                 </p>
                 <div className="mt-6 flex flex-wrap gap-2">
-                  {["Motor", "Câmbio", "Freios", "Suspensão", "Elétrica", "Ar-condicionado"].map((t) => (
+                  {["SUV", "Sedã", "Hatch", "Picape", "Veículos disponíveis", "WhatsApp"].map((t) => (
                     <span key={t} className="rounded-full border border-slate-900/15 bg-emerald-50 px-3 py-1 text-xs text-slate-800 backdrop-blur">
                       ✓ {t}
                     </span>
@@ -83,7 +83,7 @@ export function Features() {
           <Reveal delay={100} className="md:col-span-2">
             <SpotlightCard className="p-7">
               <span className="grid h-11 w-11 place-items-center rounded-xl bg-emerald-500/15 text-emerald-300 ring-1 ring-emerald-400/20">
-                <ShieldCheck className="h-5 w-5" aria-hidden />
+                <MessageCircle className="h-5 w-5" aria-hidden />
               </span>
               <h3 className="mt-5 font-display text-xl font-bold text-slate-900">Informações para sua escolha</h3>
               <p className="mt-2 text-sm leading-relaxed text-slate-600">
@@ -101,15 +101,7 @@ export function Features() {
             </SpotlightCard>
           </Reveal>
 
-          <Reveal delay={200} className="md:col-span-2">
-            <SpotlightCard className="p-7">
-              <p className="font-display text-5xl font-extrabold text-gradient">0%</p>
-              <h3 className="mt-3 font-display text-xl font-bold text-slate-900">Sua escolha, com mais informações</h3>
-              <p className="mt-2 text-sm leading-relaxed text-slate-600">
-                Consulte as características de cada veículo e confirme as condições antes de negociar.
-              </p>
-            </SpotlightCard>
-          </Reveal>
+
         </div>
 
         <div className="mt-5 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
