@@ -7,14 +7,6 @@ import { cn } from "../utils/cn";
 
 const FILTERS: ("Todos" | Category)[] = ["Todos", "SUV", "Sedã", "Hatch", "Picape"];
 
-function installment(price: number) {
-  // 20% down, 48x at ~1.49% a.m.
-  const pv = price * 0.8;
-  const i = 0.0149;
-  const n = 48;
-  return (pv * i) / (1 - Math.pow(1 + i, -n));
-}
-
 function CarCard({ car }: { car: Car }) {
   const [fav, setFav] = useState(false);
   return (
@@ -58,7 +50,7 @@ function CarCard({ car }: { car: Car }) {
         <div className="mt-5 flex items-end justify-between border-t border-slate-900/5 pt-4">
           <div>
             <p className="font-display text-2xl font-bold text-slate-900">{brl(car.price)}</p>
-            <p className="text-xs text-slate-500">ou 48x de <span className="text-emerald-300">{brl(installment(car.price))}</span>*</p>
+            <p className="text-xs text-slate-500">Consulte condições de pagamento</p>
           </div>
         </div>
 
@@ -81,9 +73,10 @@ export function Showcase() {
   const [filter, setFilter] = useState<(typeof FILTERS)[number]>("Todos");
   const [carsList, setCarsList] = useState<Car[]>([]);
   const [loading, setLoading] = useState(true);
+  const [loadError, setLoadError] = useState(false);
 
   useEffect(() => {
-    fetchVehicles().then(setCarsList).finally(() => setLoading(false));
+    fetchVehicles().then(setCarsList).catch(() => setLoadError(true)).finally(() => setLoading(false));
   }, []);
 
   const cars = useMemo(() => (filter === "Todos" ? carsList : carsList.filter((c) => c.category === filter)), [filter, carsList]);
@@ -96,8 +89,8 @@ export function Showcase() {
           <SectionHeading
             center={false}
             eyebrow="Estoque em destaque"
-            title={<span id="estoque-title">Escolha o seu. <span className="text-gradient">A gente garante.</span></span>}
-            subtitle="Seminovos selecionados a dedo, revisados e prontos para rodar. Estoque renovado toda semana."
+            title={<span id="estoque-title">Encontre seu carro. <span className="text-gradient">Conheça o estoque.</span></span>}
+            subtitle="Confira os veículos cadastrados e consulte a disponibilidade diretamente com a revenda."
           />
           <Reveal delay={200}>
             <div role="tablist" aria-label="Filtrar por categoria" className="glass flex flex-wrap gap-1 rounded-2xl p-1.5">
@@ -120,7 +113,8 @@ export function Showcase() {
         </div>
 
         <div key={filter} className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-          {!loading && cars.length === 0 && <p className="col-span-full py-12 text-center text-slate-600">Nenhum veículo disponível neste momento. Fale conosco para conhecer as próximas novidades.</p>}
+          {loadError && <p className="col-span-full py-12 text-center text-slate-600">Não foi possível carregar o estoque. Tente novamente mais tarde ou fale pelo WhatsApp.</p>}
+          {!loadError && !loading && cars.length === 0 && <p className="col-span-full py-12 text-center text-slate-600">Nenhum veículo disponível neste momento. Fale conosco para conhecer as próximas novidades.</p>}
           {loading && <p className="col-span-full py-12 text-center text-slate-600">Carregando estoque...</p>}
           {cars.map((car, i) => (
             <Reveal key={car.id} delay={(i % 4) * 80}>
@@ -140,7 +134,7 @@ export function Showcase() {
             <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" aria-hidden />
           </a>
           <p className="max-w-xl text-xs text-slate-500">
-            *Simulação com 20% de entrada em 48x, sujeita à aprovação de crédito. Imagens ilustrativas. Valores e disponibilidade podem mudar sem aviso prévio.
+            Preços e disponibilidade devem ser confirmados com a revenda antes de fechar negócio.
           </p>
         </Reveal>
       </div>
