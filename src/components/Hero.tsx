@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { ArrowRight, ShieldCheck, Wrench, Star, BadgeCheck, MessageCircle } from "lucide-react";
+import { ArrowRight, ShieldCheck, MapPin, BadgeCheck, MessageCircle } from "lucide-react";
 import { IMAGES, waLink } from "../data";
 
 export function Hero() {
@@ -88,7 +88,7 @@ export function Hero() {
 
           <ul {...enter(480)} className={`${enter(480).className} mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-sm text-slate-600`}>
             <li className="flex items-center gap-2"><ShieldCheck className="h-4 w-4 text-emerald-700" aria-hidden /> Conheça os veículos à venda</li>
-            <li className="flex items-center gap-2"><Wrench className="h-4 w-4 text-emerald-700" aria-hidden /> Atendimento pelo WhatsApp</li>
+            <li className="flex items-center gap-2"><MapPin className="h-4 w-4 text-emerald-700" aria-hidden /> Atendimento pelo WhatsApp</li>
             <li className="flex items-center gap-2"><BadgeCheck className="h-4 w-4 text-emerald-700" aria-hidden /> Confira as informações do anúncio</li>
           </ul>
         </div>
@@ -110,41 +110,7 @@ export function Hero() {
             <div className="absolute inset-0 bg-gradient-to-t from-emerald-950/75 via-emerald-800/25 to-transparent" aria-hidden />
           </div>
 
-          {/* Floating cards */}
-          <div className="glass absolute -left-2 top-6 hidden animate-float rounded-2xl p-4 shadow-xl sm:block lg:-left-10">
-            <div className="flex items-center gap-3">
-              <span className="grid h-10 w-10 place-items-center rounded-xl bg-emerald-500/15 text-emerald-700">
-                <ShieldCheck className="h-5 w-5" aria-hidden />
-              </span>
-              <div className="text-left">
-                <p className="text-xs text-slate-600">Conheça nosso estoque</p>
-                <p className="font-display text-sm font-bold text-slate-900">Veículos disponíveis</p>
-              </div>
-            </div>
-          </div>
 
-          <div className="glass absolute -right-2 bottom-24 hidden animate-float rounded-2xl p-4 shadow-xl [animation-delay:-3s] sm:block lg:-right-10">
-            <div className="flex items-center gap-1 text-amber-300" aria-label="5 estrelas">
-              {[...Array(5)].map((_, i) => <Star key={i} className="h-4 w-4 fill-current" aria-hidden />)}
-            </div>
-            <p className="mt-1.5 text-left font-display text-sm font-bold text-slate-900">Fale com nossa equipe</p>
-            <p className="text-left text-xs text-slate-600">Tire dúvidas pelo WhatsApp</p>
-          </div>
-
-          <div className="absolute inset-x-4 bottom-4 sm:inset-x-8 sm:bottom-8">
-            <div className="glass mx-auto grid max-w-3xl grid-cols-3 divide-x divide-slate-900/10 rounded-2xl py-4 text-center">
-              {[
-                ["Dois Irmãos", "RS"],
-                ["Estoque", "veículos anunciados"],
-                ["Contato", "via WhatsApp"],
-              ].map(([n, l]) => (
-                <div key={l} className="px-2">
-                  <p className="font-display text-xl font-bold text-slate-900 sm:text-3xl">{n}</p>
-                  <p className="mt-0.5 text-[11px] text-slate-600 sm:text-sm">{l}</p>
-                </div>
-              ))}
-            </div>
-          </div>
         </div>
       </div>
     </section>
