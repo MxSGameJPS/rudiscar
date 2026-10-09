@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { ArrowRight, ShieldCheck, Wrench, Star, BadgeCheck, MessageCircle } from "lucide-react";
+import { ArrowRight, ShieldCheck, MapPin, BadgeCheck, MessageCircle } from "lucide-react";
 import { IMAGES, waLink } from "../data";
 
 export function Hero() {
@@ -43,8 +43,8 @@ export function Hero() {
               href="#estoque"
               className="group inline-flex items-center gap-2 rounded-full border border-slate-900/10 bg-emerald-50 py-1.5 pl-1.5 pr-4 text-xs font-medium text-slate-700 backdrop-blur transition hover:border-emerald-400/40 hover:bg-emerald-50 sm:text-sm"
             >
-              <span className="rounded-full bg-emerald-500 px-2.5 py-0.5 text-[11px] font-bold uppercase tracking-wide text-emerald-950">Novo</span>
-              Estoque atualizado esta semana
+              <span className="rounded-full bg-emerald-500 px-2.5 py-0.5 text-[11px] font-bold uppercase tracking-wide text-emerald-950">Estoque</span>
+              Confira os veículos disponíveis
               <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" aria-hidden />
             </a>
           </div>
@@ -56,15 +56,14 @@ export function Hero() {
           >
             Seu próximo carro,
             <br />
-            <span className="text-gradient">revisado por quem entende.</span>
+            <span className="text-gradient">disponível para você conhecer.</span>
           </h1>
 
           <p
             {...enter(240)}
             className={`${enter(240).className} mx-auto mt-6 max-w-2xl text-base leading-relaxed text-slate-600 sm:text-lg`}
           >
-            Na Rudi's Car, cada seminovo passa pela nossa própria oficina mecânica antes de chegar até você.
-            Mais de 120 itens inspecionados, garantia real e financiamento que cabe no seu bolso — aqui em Dois Irmãos.
+            Na Rudi's Car você encontra veículos anunciados com informações sobre modelos e preços. Consulte nosso estoque em Dois Irmãos e fale diretamente com a equipe para confirmar disponibilidade e condições.
           </p>
 
           <div {...enter(360)} className={`${enter(360).className} mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row`}>
@@ -88,9 +87,9 @@ export function Hero() {
           </div>
 
           <ul {...enter(480)} className={`${enter(480).className} mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-sm text-slate-600`}>
-            <li className="flex items-center gap-2"><ShieldCheck className="h-4 w-4 text-emerald-700" aria-hidden /> Garantia de motor e câmbio</li>
-            <li className="flex items-center gap-2"><Wrench className="h-4 w-4 text-emerald-700" aria-hidden /> Oficina própria</li>
-            <li className="flex items-center gap-2"><BadgeCheck className="h-4 w-4 text-emerald-700" aria-hidden /> Procedência verificada</li>
+            <li className="flex items-center gap-2"><ShieldCheck className="h-4 w-4 text-emerald-700" aria-hidden /> Conheça os veículos à venda</li>
+            <li className="flex items-center gap-2"><MapPin className="h-4 w-4 text-emerald-700" aria-hidden /> Atendimento pelo WhatsApp</li>
+            <li className="flex items-center gap-2"><BadgeCheck className="h-4 w-4 text-emerald-700" aria-hidden /> Confira as informações do anúncio</li>
           </ul>
         </div>
 
@@ -103,7 +102,7 @@ export function Hero() {
           >
             <img
               src={IMAGES.hero}
-              alt="SUVs seminovos com faróis acesos em showroom escuro"
+              alt="Imagem ilustrativa de veículos em exposição"
               className="aspect-[16/10] w-full object-cover sm:aspect-[16/8]"
               style={{ transform: `scale(1.06) translate(${offset.x * -12}px, ${offset.y * -8}px)` }}
               fetchPriority="high"
@@ -111,41 +110,7 @@ export function Hero() {
             <div className="absolute inset-0 bg-gradient-to-t from-emerald-950/75 via-emerald-800/25 to-transparent" aria-hidden />
           </div>
 
-          {/* Floating cards */}
-          <div className="glass absolute -left-2 top-6 hidden animate-float rounded-2xl p-4 shadow-xl sm:block lg:-left-10">
-            <div className="flex items-center gap-3">
-              <span className="grid h-10 w-10 place-items-center rounded-xl bg-emerald-500/15 text-emerald-700">
-                <ShieldCheck className="h-5 w-5" aria-hidden />
-              </span>
-              <div className="text-left">
-                <p className="text-xs text-slate-600">Inspeção completa</p>
-                <p className="font-display text-sm font-bold text-slate-900">120+ itens verificados</p>
-              </div>
-            </div>
-          </div>
 
-          <div className="glass absolute -right-2 bottom-24 hidden animate-float rounded-2xl p-4 shadow-xl [animation-delay:-3s] sm:block lg:-right-10">
-            <div className="flex items-center gap-1 text-amber-300" aria-label="5 estrelas">
-              {[...Array(5)].map((_, i) => <Star key={i} className="h-4 w-4 fill-current" aria-hidden />)}
-            </div>
-            <p className="mt-1.5 text-left font-display text-sm font-bold text-slate-900">4,9 no Google</p>
-            <p className="text-left text-xs text-slate-600">+ de 300 avaliações</p>
-          </div>
-
-          <div className="absolute inset-x-4 bottom-4 sm:inset-x-8 sm:bottom-8">
-            <div className="glass mx-auto grid max-w-3xl grid-cols-3 divide-x divide-slate-900/10 rounded-2xl py-4 text-center">
-              {[
-                ["20+", "anos de estrada"],
-                ["2.500+", "clientes atendidos"],
-                ["48h", "aprovação de crédito"],
-              ].map(([n, l]) => (
-                <div key={l} className="px-2">
-                  <p className="font-display text-xl font-bold text-slate-900 sm:text-3xl">{n}</p>
-                  <p className="mt-0.5 text-[11px] text-slate-600 sm:text-sm">{l}</p>
-                </div>
-              ))}
-            </div>
-          </div>
         </div>
       </div>
     </section>

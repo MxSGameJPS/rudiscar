@@ -15,8 +15,7 @@ export async function fetchVehicles(): Promise<Car[]> {
       .order("criado_em", { ascending: false });
 
     if (error) {
-      console.warn("Retornando estoque local por fallback:", error);
-      return [];
+      throw new Error(error.message);
     }
 
     return (data || []).map((v: any, index: number) => ({
@@ -24,9 +23,9 @@ export async function fetchVehicles(): Promise<Car[]> {
       name: v.nome || `${v.marca} ${v.modelo}`.trim(),
       version: v.versao || "",
       year: v.ano || (v.ano_fabricacao && v.ano_modelo ? `${v.ano_fabricacao}/${v.ano_modelo}` : ""),
-      km: v.km || (v.quilometragem ? `${v.quilometragem.toLocaleString("pt-BR")} km` : "0 km"),
-      fuel: v.combustivel || "Flex",
-      gear: v.cambio || "Manual",
+      km: v.km || (v.quilometragem != null ? `${v.quilometragem.toLocaleString("pt-BR")} km` : "Não informado"),
+      fuel: v.combustivel || "Não informado",
+      gear: v.cambio || "Não informado",
       price: Number(v.preco) || 0,
       category: v.categoria || "SUV",
       img: v.imagem_capa || (v.imagens && v.imagens[0]) || "",
@@ -34,7 +33,7 @@ export async function fetchVehicles(): Promise<Car[]> {
     }));
   } catch (err) {
     console.error("Erro ao buscar veículos do Supabase:", err);
-    return [];
+    throw err;
   }
 }
 

@@ -7,7 +7,6 @@ const LINKS = [
   { href: "#estoque", label: "Estoque" },
   { href: "#diferenciais", label: "Diferenciais" },
   { href: "#planos", label: "Planos" },
-  { href: "#depoimentos", label: "Clientes" },
   { href: "#faq", label: "Dúvidas" },
   { href: "#contato", label: "Contato" },
 ];

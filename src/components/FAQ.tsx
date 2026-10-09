@@ -5,12 +5,12 @@ import { cn } from "../utils/cn";
 import { waLink } from "../data";
 
 const FAQS = [
-  { q: "Os carros realmente passam pela oficina de vocês?", a: "Sim. A Rudi's Car nasceu como mecânica automotiva e todo seminovo passa pelo nosso elevador antes de ir para a venda. Checamos mais de 120 itens e entregamos o relatório junto com o carro." },
-  { q: "Vocês aceitam meu carro usado na troca?", a: "Aceitamos! Fazemos uma avaliação justa e transparente, na hora, e o valor entra como parte da entrada. Pode trazer o carro ou mandar fotos pelo WhatsApp para uma pré-avaliação." },
-  { q: "Como funciona o financiamento?", a: "Trabalhamos com os principais bancos e financeiras do país. Você envia seus dados, nós buscamos a melhor taxa e, na maioria dos casos, a resposta sai no mesmo dia. É possível financiar até 100% dependendo do perfil." },
-  { q: "O que a garantia cobre?", a: "A garantia cobre motor e câmbio pelo prazo do seu plano (3, 6 ou 12 meses). E o melhor: o atendimento é feito aqui mesmo, na nossa oficina, sem burocracia." },
-  { q: "Posso fazer test-drive?", a: "Claro! Agende pelo WhatsApp ou passe na loja na Av. João Klauck, 796, em Dois Irmãos. Deixamos o carro pronto para você." },
-  { q: "Quem cuida da documentação e transferência?", a: "Nós. Cuidamos da vistoria, transferência e toda a papelada. No plano Plus e Total, o despachante é por nossa conta." },
+  { q: "Como descubro quais veículos estão disponíveis?", a: "Consulte o estoque no site e confirme a disponibilidade diretamente com a Rudi's Car pelo WhatsApp." },
+  { q: "Posso oferecer meu carro na negociação?", a: "Entre em contato com nossa equipe para consultar as possibilidades de avaliação e negociação do seu veículo." },
+  { q: "Existem opções de financiamento?", a: "Consulte a equipe sobre as condições de pagamento disponíveis para cada veículo. Eventuais propostas de crédito dependem de análise." },
+  { q: "Como posso conhecer um carro pessoalmente?", a: "Fale pelo WhatsApp para combinar uma visita e confirmar a disponibilidade do modelo desejado." },
+  { q: "Onde fica a Rudi's Car?", a: "A revenda fica na Av. João Klauck, 796, em Dois Irmãos, RS. Consulte o mapa na seção de contato." },
+  { q: "Como esclareço dúvidas sobre documentação ou garantia?", a: "Nossa equipe informa as condições aplicáveis à negociação do veículo de seu interesse. Consulte antes de concluir a compra." },
 ];
 
 export function FAQ() {
