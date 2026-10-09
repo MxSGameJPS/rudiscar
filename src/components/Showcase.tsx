@@ -73,9 +73,10 @@ export function Showcase() {
   const [filter, setFilter] = useState<(typeof FILTERS)[number]>("Todos");
   const [carsList, setCarsList] = useState<Car[]>([]);
   const [loading, setLoading] = useState(true);
+  const [loadError, setLoadError] = useState(false);
 
   useEffect(() => {
-    fetchVehicles().then(setCarsList).finally(() => setLoading(false));
+    fetchVehicles().then(setCarsList).catch(() => setLoadError(true)).finally(() => setLoading(false));
   }, []);
 
   const cars = useMemo(() => (filter === "Todos" ? carsList : carsList.filter((c) => c.category === filter)), [filter, carsList]);
@@ -112,7 +113,8 @@ export function Showcase() {
         </div>
 
         <div key={filter} className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-          {!loading && cars.length === 0 && <p className="col-span-full py-12 text-center text-slate-600">Nenhum veículo disponível neste momento. Fale conosco para conhecer as próximas novidades.</p>}
+          {loadError && <p className="col-span-full py-12 text-center text-slate-600">Não foi possível carregar o estoque. Tente novamente mais tarde ou fale pelo WhatsApp.</p>}
+          {!loadError && !loading && cars.length === 0 && <p className="col-span-full py-12 text-center text-slate-600">Nenhum veículo disponível neste momento. Fale conosco para conhecer as próximas novidades.</p>}
           {loading && <p className="col-span-full py-12 text-center text-slate-600">Carregando estoque...</p>}
           {cars.map((car, i) => (
             <Reveal key={car.id} delay={(i % 4) * 80}>
