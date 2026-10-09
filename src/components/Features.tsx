@@ -46,8 +46,8 @@ export function Features() {
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <SectionHeading
           eyebrow="Por que Rudi's Car"
-          title={<span id="features-title">Uma concessionária com <span className="text-gradient">alma de oficina.</span></span>}
-          subtitle="Nascemos como mecânica automotiva. Hoje vendemos carros com o mesmo cuidado que sempre tivemos ao consertá-los — e isso muda tudo."
+          title={<span id="features-title">Uma revenda para <span className="text-gradient">seu próximo carro.</span></span>}
+          subtitle="Conheça os veículos à venda, compare suas características e converse diretamente com nossa equipe."
         />
 
         <div className="mt-16 grid gap-5 md:grid-cols-6 md:grid-rows-[auto_auto]">
@@ -55,8 +55,8 @@ export function Features() {
           <Reveal className="md:col-span-4 md:row-span-2">
             <SpotlightCard className="flex min-h-[420px] flex-col justify-end">
               <img
-                src={IMAGES.workshop}
-                alt="Mecânico da Rudi's Car inspecionando carro elevado na oficina"
+                src={IMAGES.lot}
+                alt="Imagem ilustrativa de veículos à venda"
                 loading="lazy"
                 className="absolute inset-0 h-full w-full object-cover opacity-90 transition-transform duration-[1.5s] group-hover:scale-105"
               />
@@ -65,10 +65,9 @@ export function Features() {
                 <span className="grid h-12 w-12 place-items-center rounded-2xl bg-emerald-500 text-emerald-950 shadow-lg shadow-emerald-500/30">
                   <Wrench className="h-6 w-6" aria-hidden />
                 </span>
-                <h3 className="mt-5 font-display text-2xl font-bold text-slate-900 sm:text-3xl">Revisado na nossa própria oficina</h3>
+                <h3 className="mt-5 font-display text-2xl font-bold text-slate-900 sm:text-3xl">Encontre o veículo certo para você</h3>
                 <p className="mt-3 max-w-lg text-slate-700">
-                  Motor, câmbio, suspensão, freios, elétrica e ar-condicionado. Cada carro sobe no elevador e só vai para
-                  o pátio depois de aprovado pelos nossos mecânicos.
+                  Conheça as opções anunciadas, confira preços e informações e fale com a equipe antes de decidir.
                 </p>
                 <div className="mt-6 flex flex-wrap gap-2">
                   {["Motor", "Câmbio", "Freios", "Suspensão", "Elétrica", "Ar-condicionado"].map((t) => (
@@ -86,9 +85,9 @@ export function Features() {
               <span className="grid h-11 w-11 place-items-center rounded-xl bg-emerald-500/15 text-emerald-300 ring-1 ring-emerald-400/20">
                 <ShieldCheck className="h-5 w-5" aria-hidden />
               </span>
-              <h3 className="mt-5 font-display text-xl font-bold text-slate-900">Garantia de verdade</h3>
+              <h3 className="mt-5 font-display text-xl font-bold text-slate-900">Informações para sua escolha</h3>
               <p className="mt-2 text-sm leading-relaxed text-slate-600">
-                Até 12 meses de garantia de motor e câmbio — e quem cuida da manutenção somos nós mesmos.
+                Converse com a equipe para esclarecer suas dúvidas sobre os veículos anunciados.
               </p>
               <div className="mt-6 flex items-end gap-1.5" aria-hidden>
                 {[40, 55, 48, 70, 62, 85, 100].map((h, i) => (
@@ -105,9 +104,9 @@ export function Features() {
           <Reveal delay={200} className="md:col-span-2">
             <SpotlightCard className="p-7">
               <p className="font-display text-5xl font-extrabold text-gradient">0%</p>
-              <h3 className="mt-3 font-display text-xl font-bold text-slate-900">Surpresa depois da compra</h3>
+              <h3 className="mt-3 font-display text-xl font-bold text-slate-900">Sua escolha, com mais informações</h3>
               <p className="mt-2 text-sm leading-relaxed text-slate-600">
-                Relatório de inspeção entregue junto com a chave. Você sabe exatamente o que está levando.
+                Consulte as características de cada veículo e confirme as condições antes de negociar.
               </p>
             </SpotlightCard>
           </Reveal>
