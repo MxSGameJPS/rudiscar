@@ -1,11 +1,10 @@
-import { useState } from "react";
-import { Search, ClipboardCheck, CreditCard, KeyRound, Check } from "lucide-react";
+import { Search, MessageCircle, CreditCard, KeyRound, Check } from "lucide-react";
 import { Reveal, SectionHeading } from "./Reveal";
 import { IMAGES } from "../data";
 
 const STEPS = [
   { icon: Search, title: "Escolha o carro", text: "Navegue pelo estoque ou conte pra gente o que procura. Encontramos para você." },
-  { icon: ClipboardCheck, title: "Converse com nossa equipe", text: "Tire dúvidas e confirme a disponibilidade antes de agendar sua visita." },
+  { icon: MessageCircle, title: "Converse com nossa equipe", text: "Tire dúvidas e confirme a disponibilidade antes de agendar sua visita." },
   { icon: CreditCard, title: "Feche do seu jeito", text: "À vista, financiado ou com seu usado na troca. Condições sujeitas a consulta e análise." },
   { icon: KeyRound, title: "Saia dirigindo", text: "Consulte nossa equipe sobre documentos e etapas da negociação." },
 ];
