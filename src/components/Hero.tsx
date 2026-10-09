@@ -43,7 +43,7 @@ export function Hero() {
               href="#estoque"
               className="group inline-flex items-center gap-2 rounded-full border border-slate-900/10 bg-emerald-50 py-1.5 pl-1.5 pr-4 text-xs font-medium text-slate-700 backdrop-blur transition hover:border-emerald-400/40 hover:bg-emerald-50 sm:text-sm"
             >
-              <span className="rounded-full bg-emerald-500 px-2.5 py-0.5 text-[11px] font-bold uppercase tracking-wide text-emerald-950">Novo</span>
+              <span className="rounded-full bg-emerald-500 px-2.5 py-0.5 text-[11px] font-bold uppercase tracking-wide text-emerald-950">Estoque</span>
               Confira os veículos disponíveis
               <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" aria-hidden />
             </a>
@@ -102,7 +102,7 @@ export function Hero() {
           >
             <img
               src={IMAGES.hero}
-              alt="SUVs seminovos com faróis acesos em showroom escuro"
+              alt="Imagem ilustrativa de veículos em exposição"
               className="aspect-[16/10] w-full object-cover sm:aspect-[16/8]"
               style={{ transform: `scale(1.06) translate(${offset.x * -12}px, ${offset.y * -8}px)` }}
               fetchPriority="high"
