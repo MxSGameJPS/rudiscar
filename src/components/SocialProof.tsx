@@ -9,7 +9,7 @@ export function SocialProof() {
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <Reveal>
           <p className="text-center text-sm font-medium text-slate-500">
-            Seminovos das principais marcas, financiados pelos maiores bancos do país
+            Conheça marcas e modelos de veículos para sua próxima escolha
           </p>
         </Reveal>
       </div>
