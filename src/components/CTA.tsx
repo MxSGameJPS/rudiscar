@@ -21,7 +21,7 @@ export function CTA() {
           </p>
           <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <a
-              href={waLink("Olá! Quero aproveitar as condições especiais do mês na Rudi's Car.")}
+              href={waLink("Olá! Quero saber mais sobre os veículos disponíveis na Rudi's Car.")}
               target="_blank"
               rel="noopener noreferrer"
               className="group relative inline-flex w-full items-center justify-center gap-2 overflow-hidden rounded-2xl bg-white px-7 py-4 font-semibold text-emerald-950 shadow-2xl transition hover:-translate-y-0.5 sm:w-auto"
