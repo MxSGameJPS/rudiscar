@@ -96,8 +96,8 @@ export function Showcase() {
           <SectionHeading
             center={false}
             eyebrow="Estoque em destaque"
-            title={<span id="estoque-title">Escolha o seu. <span className="text-gradient">A gente garante.</span></span>}
-            subtitle="Seminovos selecionados a dedo, revisados e prontos para rodar. Estoque renovado toda semana."
+            title={<span id="estoque-title">Encontre seu carro. <span className="text-gradient">Conheça o estoque.</span></span>}
+            subtitle="Confira os veículos cadastrados e consulte a disponibilidade diretamente com a revenda."
           />
           <Reveal delay={200}>
             <div role="tablist" aria-label="Filtrar por categoria" className="glass flex flex-wrap gap-1 rounded-2xl p-1.5">
@@ -140,7 +140,7 @@ export function Showcase() {
             <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" aria-hidden />
           </a>
           <p className="max-w-xl text-xs text-slate-500">
-            *Simulação com 20% de entrada em 48x, sujeita à aprovação de crédito. Imagens ilustrativas. Valores e disponibilidade podem mudar sem aviso prévio.
+            Preços e disponibilidade devem ser confirmados com a revenda antes de fechar negócio.
           </p>
         </Reveal>
       </div>
