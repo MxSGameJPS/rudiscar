@@ -1,4 +1,4 @@
-import { CarFront, Search, MessageCircle, Handshake, MapPin, Repeat, type LucideIcon } from "lucide-react";
+import { CarFront, Search, MessageCircle, MapPin, Repeat, type LucideIcon } from "lucide-react";
 import { Reveal, SectionHeading } from "./Reveal";
 import { IMAGES } from "../data";
 import { cn } from "../utils/cn";
