@@ -121,7 +121,7 @@ export function AdminDashboard() {
         tag: "",
         cambio: "Automático",
         combustivel: "Flex",
-        cor: "Preto",
+        cor: "",
         portas: 4,
         placa_final: "0",
         descricao: "",
@@ -1051,6 +1051,23 @@ export function AdminDashboard() {
                     Marcar Vendido
                   </label>
                 </div>
+              </div>
+
+              {/* Cor do veículo */}
+              <div>
+                <label htmlFor="veiculo-cor" className="block text-xs font-medium text-slate-700">Cor do veículo</label>
+                <input
+                  id="veiculo-cor"
+                  type="text"
+                  list="cores-veiculo"
+                  placeholder="Ex: Branco, Prata, Preto, Azul..."
+                  value={editingVeh.cor || ""}
+                  onChange={(e) => setEditingVeh({ ...editingVeh, cor: e.target.value })}
+                  className="mt-1 w-full rounded-xl border border-slate-900/10 bg-slate-50 px-3 py-2 text-xs text-slate-900 outline-none focus:border-emerald-400"
+                />
+                <datalist id="cores-veiculo">
+                  {["Branco", "Preto", "Prata", "Cinza", "Vermelho", "Azul", "Verde", "Bege", "Marrom", "Dourado", "Amarelo", "Laranja"].map((cor) => <option key={cor} value={cor} />)}
+                </datalist>
               </div>
 
               {/* Opcionais List */}
