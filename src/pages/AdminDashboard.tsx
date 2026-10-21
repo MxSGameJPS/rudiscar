@@ -126,7 +126,7 @@ export function AdminDashboard() {
         placa_final: "0",
         descricao: "",
         opcionais: ["Ar-condicionado", "Direção hidráulica", "Freios ABS", "Airbags"],
-        imagem_capa: "https://images.pexels.com/photos/11808155/pexels-photo-11808155.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=560&w=840",
+        imagem_capa: "",
         imagens: [],
         destaque: false,
         vendido: false,
@@ -141,6 +141,7 @@ export function AdminDashboard() {
     if (!editingVeh.marca?.trim() || !editingVeh.modelo?.trim() || !(Number(editingVeh.preco) > 0)) {
       setAdminError("Preencha marca, modelo e um preço válido."); return;
     }
+    if (uploadingImg) return;
     const res = await saveVehicleAdmin(editingVeh);
     if (!res.error) {
       setVehModalOpen(false);
@@ -166,20 +167,28 @@ export function AdminDashboard() {
   };
 
   const handleImageFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (!file) return;
+    const files = Array.from(e.target.files || []);
+    if (!files.length) return;
+    e.target.value = "";
     setUploadingImg(true);
-    if (!["image/jpeg", "image/png", "image/webp"].includes(file.type) || file.size > 8 * 1024 * 1024) {
+    const invalid = files.find(file => !["image/jpeg", "image/png", "image/webp"].includes(file.type) || file.size > 8 * 1024 * 1024);
+    if (invalid) {
       setUploadingImg(false);
-      setAdminError("A imagem deve ser JPG, PNG ou WebP e ter no máximo 8 MB."); return;
+      setAdminError("Todas as imagens devem ser JPG, PNG ou WebP, até 8 MB cada.");
+      return;
     }
-    const url = await uploadVehicleImage(file);
+    const uploaded: string[] = [];
+    for (const file of files) {
+      const url = await uploadVehicleImage(file);
+      if (url) uploaded.push(url);
+    }
+    setEditingVeh(prev => {
+      if (!prev) return null;
+      const gallery = Array.from(new Set([...(prev.imagem_capa ? [prev.imagem_capa] : []), ...(prev.imagens || []), ...uploaded]));
+      return { ...prev, imagem_capa: prev.imagem_capa || uploaded[0] || "", imagens: gallery };
+    });
     setUploadingImg(false);
-    if (url) {
-      setEditingVeh((prev) => prev ? { ...prev, imagem_capa: url } : null);
-    } else {
-      alert("Falha no upload para o Supabase Storage. Verifique se o bucket 'veiculos' está configurado.");
-    }
+    if (uploaded.length !== files.length) setAdminError(`Enviadas ${uploaded.length} de ${files.length} imagens. Confira as permissões do Storage.`);
   };
 
   const handleAddOptional = () => {
@@ -863,13 +872,27 @@ export function AdminDashboard() {
                     <div className="flex items-center gap-2">
                       <label className="inline-flex cursor-pointer items-center gap-2 rounded-xl bg-emerald-50 px-3.5 py-2 text-xs font-semibold text-slate-900 transition hover:bg-white/20">
                         <Upload className="h-3.5 w-3.5" />
-                        {uploadingImg ? "Enviando..." : "Upload no Supabase Storage"}
-                        <input type="file" accept="image/*" onChange={handleImageFileUpload} className="hidden" />
+                        {uploadingImg ? "Enviando..." : "Adicionar fotos"}
+                        <input type="file" multiple disabled={uploadingImg} accept="image/jpeg,image/png,image/webp" onChange={handleImageFileUpload} className="hidden" />
                       </label>
-                      <span className="text-[10px] text-slate-500">Envie uma foto da galeria</span>
+                      <span className="text-[10px] text-slate-500">Selecione várias fotos (até 8 MB cada)</span>
                     </div>
                   </div>
                 </div>
+              </div>
+
+              <div className="space-y-3">
+                <p className="text-xs font-semibold text-slate-700">Galeria de fotos</p>
+                <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+                  {Array.from(new Set([...(editingVeh.imagem_capa ? [editingVeh.imagem_capa] : []), ...(editingVeh.imagens || [])])).map(url => (
+                    <div key={url} className="space-y-2 rounded-xl border border-slate-200 p-2">
+                      <img src={url} alt="Foto do veículo" className="h-24 w-full rounded-lg object-cover" />
+                      <button type="button" disabled={uploadingImg} onClick={() => setEditingVeh(prev => prev ? { ...prev, imagem_capa: url, imagens: Array.from(new Set([...(prev.imagens || []), ...(prev.imagem_capa ? [prev.imagem_capa] : []), url])) } : null)} className="block w-full rounded bg-emerald-50 px-2 py-1 text-xs text-emerald-800">{editingVeh.imagem_capa === url ? "Capa atual" : "Definir capa"}</button>
+                      <button type="button" disabled={uploadingImg} onClick={() => setEditingVeh(prev => { if (!prev) return null; const remaining = Array.from(new Set([...(prev.imagem_capa ? [prev.imagem_capa] : []), ...(prev.imagens || [])])).filter(image => image !== url); return { ...prev, imagem_capa: prev.imagem_capa === url ? (remaining[0] || "") : prev.imagem_capa, imagens: remaining }; })} className="block w-full rounded bg-rose-50 px-2 py-1 text-xs text-rose-700">Remover</button>
+                    </div>
+                  ))}
+                </div>
+                <p className="text-xs text-slate-500">Remover uma foto da galeria não exclui o arquivo do Storage.</p>
               </div>
 
               {/* Grid 1: Basic info */}

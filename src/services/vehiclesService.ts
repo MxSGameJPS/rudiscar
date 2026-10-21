@@ -30,6 +30,11 @@ export async function fetchVehicles(): Promise<Car[]> {
       category: v.categoria || "SUV",
       img: v.imagem_capa || (v.imagens && v.imagens[0]) || "",
       tag: v.tag || (v.destaque ? "Destaque" : undefined),
+      images: Array.from(new Set([v.imagem_capa, ...(Array.isArray(v.imagens) ? v.imagens : [])].filter(Boolean))),
+      description: v.descricao || "",
+      options: Array.isArray(v.opcionais) ? v.opcionais : [],
+      color: v.cor || "",
+      doors: v.portas || undefined,
     }));
   } catch (err) {
     console.error("Erro ao buscar veículos do Supabase:", err);

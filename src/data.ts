@@ -29,6 +29,11 @@ export interface Car {
   category: Category;
   img: string;
   tag?: string;
+  images?: string[];
+  description?: string;
+  options?: string[];
+  color?: string;
+  doors?: number;
 }
 
 export const IMAGES = {
