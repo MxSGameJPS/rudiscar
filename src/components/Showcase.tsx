@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import { Gauge, Fuel, Calendar, Cog, Heart, ArrowUpRight, MessageCircle, X, ChevronLeft, ChevronRight } from "lucide-react";
+import { Gauge, Fuel, Calendar, Cog, ArrowUpRight, MessageCircle, X, ChevronLeft, ChevronRight } from "lucide-react";
 import { Reveal, SectionHeading } from "./Reveal";
 import { brl, waLink, type Car, type Category } from "../data";
 import { fetchVehicles } from "../services/vehiclesService";
@@ -8,7 +8,6 @@ import { cn } from "../utils/cn";
 const FILTERS: ("Todos" | Category)[] = ["Todos", "SUV", "Sedã", "Hatch", "Picape"];
 
 function CarCard({ car, onDetails }: { car: Car; onDetails: () => void }) {
-  const [fav, setFav] = useState(false);
   return (
     <article className="group relative flex h-full flex-col overflow-hidden rounded-3xl border border-slate-900/10 bg-white shadow-sm transition-all duration-500 hover:-translate-y-1.5 hover:border-emerald-400/30 hover:shadow-2xl hover:shadow-emerald-500/10">
       <button type="button" onClick={onDetails} aria-label={`Ver detalhes de ${car.name}`} className="relative aspect-[4/3] overflow-hidden text-left">
@@ -25,14 +24,7 @@ function CarCard({ car, onDetails }: { car: Car; onDetails: () => void }) {
             <span className="rounded-full bg-emerald-500 px-2.5 py-1 text-[11px] font-bold text-emerald-950">{car.tag}</span>
           )}
         </div>
-        <span
-          onClick={(e) => { e.stopPropagation(); setFav((f) => !f); }}
-          aria-pressed={fav}
-          aria-label={fav ? `Remover ${car.name} dos favoritos` : `Favoritar ${car.name}`}
-          className="glass absolute right-3 top-3 grid h-9 w-9 place-items-center rounded-full text-slate-900 transition-transform duration-300 hover:scale-110 active:scale-90"
-        >
-          <Heart className={cn("h-4 w-4 transition-all duration-300", fav && "scale-110 fill-rose-500 text-rose-500")} aria-hidden />
-        </span>
+
       </button>
 
       <div className="flex flex-1 flex-col p-5">
