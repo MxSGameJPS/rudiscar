@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import { Gauge, Fuel, Calendar, Cog, Heart, ArrowUpRight, MessageCircle } from "lucide-react";
+import { Gauge, Fuel, Calendar, Cog, Heart, ArrowUpRight, MessageCircle, X, ChevronLeft, ChevronRight } from "lucide-react";
 import { Reveal, SectionHeading } from "./Reveal";
 import { brl, waLink, type Car, type Category } from "../data";
 import { fetchVehicles } from "../services/vehiclesService";
@@ -7,11 +7,11 @@ import { cn } from "../utils/cn";
 
 const FILTERS: ("Todos" | Category)[] = ["Todos", "SUV", "Sedã", "Hatch", "Picape"];
 
-function CarCard({ car }: { car: Car }) {
+function CarCard({ car, onDetails }: { car: Car; onDetails: () => void }) {
   const [fav, setFav] = useState(false);
   return (
     <article className="group relative flex h-full flex-col overflow-hidden rounded-3xl border border-slate-900/10 bg-white shadow-sm transition-all duration-500 hover:-translate-y-1.5 hover:border-emerald-400/30 hover:shadow-2xl hover:shadow-emerald-500/10">
-      <div className="relative aspect-[4/3] overflow-hidden">
+      <button type="button" onClick={onDetails} aria-label={`Ver detalhes de ${car.name}`} className="relative aspect-[4/3] overflow-hidden text-left">
         <img
           src={car.img}
           alt={`${car.name} ${car.version} ${car.year}`}
@@ -25,19 +25,18 @@ function CarCard({ car }: { car: Car }) {
             <span className="rounded-full bg-emerald-500 px-2.5 py-1 text-[11px] font-bold text-emerald-950">{car.tag}</span>
           )}
         </div>
-        <button
-          type="button"
-          onClick={() => setFav((f) => !f)}
+        <span
+          onClick={(e) => { e.stopPropagation(); setFav((f) => !f); }}
           aria-pressed={fav}
           aria-label={fav ? `Remover ${car.name} dos favoritos` : `Favoritar ${car.name}`}
           className="glass absolute right-3 top-3 grid h-9 w-9 place-items-center rounded-full text-slate-900 transition-transform duration-300 hover:scale-110 active:scale-90"
         >
           <Heart className={cn("h-4 w-4 transition-all duration-300", fav && "scale-110 fill-rose-500 text-rose-500")} aria-hidden />
-        </button>
-      </div>
+        </span>
+      </button>
 
       <div className="flex flex-1 flex-col p-5">
-        <h3 className="font-display text-lg font-bold text-slate-900">{car.name}</h3>
+        <button type="button" onClick={onDetails} className="text-left font-display text-lg font-bold text-slate-900 hover:text-emerald-700">{car.name}</button>
         <p className="text-sm text-slate-600">{car.version}</p>
 
         <dl className="mt-4 grid grid-cols-2 gap-x-3 gap-y-2 text-xs text-slate-600">
@@ -64,12 +63,15 @@ function CarCard({ car }: { car: Car }) {
           Tenho interesse
           <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" aria-hidden />
         </a>
+        <button type="button" onClick={onDetails} className="mt-3 rounded-xl border border-emerald-300 px-4 py-2 text-sm font-semibold text-emerald-800">Ver fotos e detalhes</button>
       </div>
     </article>
   );
 }
 
 export function Showcase() {
+  const [selectedCar, setSelectedCar] = useState<Car | null>(null);
+  const [photoIndex, setPhotoIndex] = useState(0);
   const [filter, setFilter] = useState<(typeof FILTERS)[number]>("Todos");
   const [carsList, setCarsList] = useState<Car[]>([]);
   const [loading, setLoading] = useState(true);
@@ -118,7 +120,7 @@ export function Showcase() {
           {loading && <p className="col-span-full py-12 text-center text-slate-600">Carregando estoque...</p>}
           {cars.map((car, i) => (
             <Reveal key={car.id} delay={(i % 4) * 80}>
-              <CarCard car={car} />
+              <CarCard car={car} onDetails={() => { setSelectedCar(car); setPhotoIndex(0); }} />
             </Reveal>
           ))}
         </div>
@@ -138,6 +140,45 @@ export function Showcase() {
           </p>
         </Reveal>
       </div>
+      {selectedCar && <VehicleDetailsModal car={selectedCar} index={photoIndex} setIndex={setPhotoIndex} onClose={() => setSelectedCar(null)} />}
     </section>
   );
+}
+
+function VehicleDetailsModal({ car, index, setIndex, onClose }: { car: Car; index: number; setIndex: (index: number) => void; onClose: () => void }) {
+  const photos = Array.from(new Set([car.img, ...(car.images || [])].filter(Boolean)));
+  useEffect(() => {
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape") onClose();
+      if (event.key === "ArrowRight") setIndex((index + 1) % Math.max(photos.length, 1));
+      if (event.key === "ArrowLeft") setIndex((index - 1 + photos.length) % Math.max(photos.length, 1));
+    };
+    window.addEventListener("keydown", onKey);
+    const previous = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => { window.removeEventListener("keydown", onKey); document.body.style.overflow = previous; };
+  }, [index, photos.length, onClose, setIndex]);
+  return <div role="presentation" onMouseDown={event => { if (event.target === event.currentTarget) onClose(); }} className="fixed inset-0 z-[100] flex items-center justify-center bg-slate-950/80 p-3 sm:p-6">
+    <div role="dialog" aria-modal="true" aria-label={`Detalhes de ${car.name}`} className="relative max-h-[95vh] w-full max-w-5xl overflow-y-auto rounded-3xl bg-white p-5 shadow-2xl sm:p-8">
+      <button type="button" onClick={onClose} aria-label="Fechar detalhes" className="absolute right-4 top-4 z-10 rounded-full bg-white p-2 shadow"><X /></button>
+      <h2 className="pr-12 text-2xl font-bold text-slate-900">{car.name}</h2>
+      <p className="mb-5 text-slate-600">{car.version} · {car.year}</p>
+      {photos.length > 0 && <div className="relative">
+        <img src={photos[index] || photos[0]} alt={`${car.name} - foto ${index + 1}`} className="max-h-[55vh] w-full rounded-2xl bg-slate-100 object-contain" />
+        {photos.length > 1 && <>
+          <button type="button" onClick={() => setIndex((index - 1 + photos.length) % photos.length)} aria-label="Foto anterior" className="absolute left-2 top-1/2 -translate-y-1/2 rounded-full bg-white/90 p-2"><ChevronLeft /></button>
+          <button type="button" onClick={() => setIndex((index + 1) % photos.length)} aria-label="Próxima foto" className="absolute right-2 top-1/2 -translate-y-1/2 rounded-full bg-white/90 p-2"><ChevronRight /></button>
+        </>}
+        <p className="mt-2 text-center text-xs text-slate-500">{index + 1} de {photos.length}</p>
+        <div className="mt-3 flex gap-2 overflow-x-auto pb-2">{photos.map((photo, i) => <button key={photo} type="button" onClick={() => setIndex(i)} aria-label={`Ver foto ${i + 1}`} className={`shrink-0 rounded-lg border-2 ${index === i ? "border-emerald-500" : "border-transparent"}`}><img src={photo} alt="" className="h-16 w-24 rounded-md object-cover" /></button>)}</div>
+      </div>}
+      <p className="mt-5 text-3xl font-bold text-emerald-700">{brl(car.price)}</p>
+      <dl className="mt-5 grid grid-cols-2 gap-3 rounded-xl bg-emerald-50 p-4 text-sm sm:grid-cols-3">
+        {([["Ano", car.year], ["Quilometragem", car.km], ["Combustível", car.fuel], ["Câmbio", car.gear], ["Cor", car.color], ["Portas", car.doors]] as const).filter(([, value]) => Boolean(value)).map(([label, value]) => <div key={label}><dt className="text-slate-500">{label}</dt><dd className="font-semibold text-slate-900">{value}</dd></div>)}
+      </dl>
+      {car.description && <div className="mt-5"><h3 className="font-bold">Descrição</h3><p className="mt-2 whitespace-pre-line text-sm text-slate-700">{car.description}</p></div>}
+      {!!car.options?.length && <div className="mt-5"><h3 className="font-bold">Opcionais</h3><ul className="mt-2 grid list-inside list-disc gap-1 text-sm text-slate-700 sm:grid-cols-2">{car.options.map((option, i) => <li key={i}>{option}</li>)}</ul></div>}
+      <a href={waLink(`Olá! Tenho interesse no ${car.name} ${car.version} ${car.year} (${brl(car.price)}). Gostaria de mais informações.`)} target="_blank" rel="noopener noreferrer" className="mt-6 inline-flex items-center gap-2 rounded-xl bg-emerald-600 px-5 py-3 font-semibold text-white"><MessageCircle size={18} /> Consultar pelo WhatsApp</a>
+    </div>
+  </div>;
 }
